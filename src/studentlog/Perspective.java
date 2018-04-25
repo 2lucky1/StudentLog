@@ -3,6 +3,8 @@ package studentlog;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
+import studentlog.views.StudentsView;
+
 public class Perspective implements IPerspectiveFactory {
 
 	@Override

@@ -22,7 +22,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="studentlog.StudentsView"
+            class="studentlog.views.StudentsView"
             icon="icons\eclipse16.png"
             id="studentlog.views.students"
             name="Students"
