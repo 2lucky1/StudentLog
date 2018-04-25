@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="studentlog.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="StudentLog Perspective"
+            class="studentlog.Perspective"
+            id="studentlog.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="studentlog.StudentsView"
+            icon="icons\eclipse16.png"
+            id="studentlog.views.students"
+            name="Students"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>
