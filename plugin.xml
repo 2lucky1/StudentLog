@@ -29,5 +29,16 @@
             restorable="true">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.products">
+      <product
+          application="StudentLog.product2"
+          name="Loggg">
+      	<property
+        	name="windowImage"
+        	value="icons/logo.png">
+        </property>
+       </product>
+   </extension>
 
 </plugin>

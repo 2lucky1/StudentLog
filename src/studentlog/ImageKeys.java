@@ -1,6 +1,7 @@
 package studentlog;
 
 public enum ImageKeys {
+	LOGO("icons/logo.png"),
 	CLOSED_FOLDER("icons/tree/folder.png"),
 	OPENED_FOLDER(""),
 	STUDENT_ICON("icons/tree/head.png"),

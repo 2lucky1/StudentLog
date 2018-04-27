@@ -6,28 +6,22 @@ import java.util.List;
 import org.eclipse.core.runtime.ListenerList;
 
 public class StudentsGroup extends Student {
-
 	private List<Student> entries;
+	
 	private StudentsGroup parent;
+	
 	private String name;
+	
 	private ListenerList listeners;
 	
-	private String fileName = "students.txt";
+//	private String fileName = "students.txt";
 
 	public StudentsGroup(StudentsGroup parent, String name) {
 		this.parent = parent;
 		this.name = name;
-		initialStudentsGroup(fileName);
+//		initialStudentsGroup(fileName);
 	}
 
-	private void initialStudentsGroup(String fileName) {
-		
-		
-	}
-
-	public void setEntries(List<Student> entries) {
-		this.entries = entries;
-	}
 
 	@Override
 	public String getName() {
@@ -104,4 +98,12 @@ public class StudentsGroup extends Student {
 			}
 		}
 	}
+//	private void initialStudentsGroup(String fileName) {
+//		
+//		
+//	}
+	
+//	public void setEntries(List<Student> entries) {
+//		this.entries = entries;
+//	}
 }

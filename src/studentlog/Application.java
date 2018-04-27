@@ -11,6 +11,8 @@ import org.eclipse.ui.PlatformUI;
  */
 public class Application implements IApplication {
 
+	public static final String PLUGIN_ID = "studentlog.views.students";
+	
 	@Override
 	public Object start(IApplicationContext context) {
 		Display display = PlatformUI.createDisplay();

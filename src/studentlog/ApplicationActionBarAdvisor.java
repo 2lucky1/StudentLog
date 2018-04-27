@@ -27,7 +27,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IWorkbenchAction exitAction;
 	private IWorkbenchAction aboutAction;
 	private IWorkbenchAction saveAction;
-//	private AddContactAction addContactAction;
+	private AddStudentAction addStudentAction;
 	private StatusLineContributionItem statusItem;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
