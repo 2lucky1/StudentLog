@@ -12,6 +12,10 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import studentlog.Const;
+import studentlog.ImageKeys;
 
 public class AddStudentAction extends Action implements ISelectionListener,  ActionFactory.IWorkbenchAction {
 
@@ -19,11 +23,13 @@ public class AddStudentAction extends Action implements ISelectionListener,  Act
 	private final IWorkbenchWindow window;
 	private IStructuredSelection selection;
 	
-	public public AddStudentAction(IWorkbenchWindow window) {
+	public AddStudentAction(IWorkbenchWindow window) {
 		this.window = window;
 		setId(ID);
 		setText("&Add Student");
-		setToolTipText("Add a student);
+		setToolTipText("Add a student");
+		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.PLUS.getFilePath()));
+		window.getSelectionService().addSelectionListener(this);
 	}
 	
 	

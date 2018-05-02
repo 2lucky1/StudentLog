@@ -27,7 +27,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IWorkbenchAction exitAction;
 	private IWorkbenchAction aboutAction;
 	private IWorkbenchAction saveAction;
-	private AddStudentAction addStudentAction;
+//	private AddStudentAction addStudentAction;
 	private StatusLineContributionItem statusItem;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
@@ -74,7 +74,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
 		coolBar.add(toolbar);
-//		toolbar.add(addContactAction);
+		toolbar.add(ActionFactory.OPEN_PERSPECTIVE_DIALOG);
 		toolbar.add(new Separator());
 //		toolbar.add(addContactAction);
 	}
