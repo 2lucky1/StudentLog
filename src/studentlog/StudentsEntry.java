@@ -3,7 +3,7 @@ package studentlog;
 import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
 
-public class StudentsEntry extends Student {
+public class StudentsEntry{
 
 	private final String name;
 
@@ -49,14 +49,14 @@ public class StudentsEntry extends Student {
 		return group;
 	}
 
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public StudentsGroup getParent() {
-		return group;
-	}
+//	@Override
+//	public String getName() {
+//		return name;
+//	}
+//
+//	@Override
+//	public StudentsGroup getParent() {
+//		return group;
+//	}
 
 }

@@ -1,15 +1,19 @@
 package studentlog.views;
 
+import java.util.List;
+
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
+import studentlog.model.Observer;
+import studentlog.model.StudentsGroup;
 import studentlog.tree.CustomTreeContentProvider;
 import studentlog.tree.CustomTreeLabelProvider;
 
-public class StudentsView extends ViewPart {
+public class StudentsView extends ViewPart implements Observer {
 
 	public static final String ID = "studentlog.views.students";
 	
@@ -39,6 +43,11 @@ public class StudentsView extends ViewPart {
 	@Override
 	public void setFocus() {
 		treeViewer.getControl().setFocus();
+	}
+
+	@Override
+	public void update(List<StudentsGroup> items) {
+		treeViewer.setInput(items);
 	}
 
 }

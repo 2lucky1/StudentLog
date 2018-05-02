@@ -41,12 +41,12 @@ public class StudentLogAdapterFactory implements IAdapterFactory {
 
 		@Override
 		public Object getParent(Object o) {
-			return ((StudentsEntry) o).getParent();
+			return ((Student) o).getParent();
 		}
 
 		@Override
 		public String getLabel(Object o) {
-			StudentsEntry entry = (StudentsEntry) o;
+			Student entry = (Student) o;
 			return entry.getName();
 		}
 
@@ -73,7 +73,7 @@ public class StudentLogAdapterFactory implements IAdapterFactory {
 		if (adapterType == IWorkbenchAdapter.class && adaptableObject instanceof StudentsGroup) {
 			return groupAdapter;
 		}
-		if (adapterType == IWorkbenchAdapter.class && adaptableObject instanceof StudentsEntry) {
+		if (adapterType == IWorkbenchAdapter.class && adaptableObject instanceof Student) {
 			return entryAdapter;
 		}
 		return null;

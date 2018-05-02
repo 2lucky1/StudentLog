@@ -19,11 +19,11 @@ public class AddStudentAction extends Action implements ISelectionListener,  Act
 	private final IWorkbenchWindow window;
 	private IStructuredSelection selection;
 	
-	public public AddStudentAction(IWorkbenchWindow window) {
+	public AddStudentAction(IWorkbenchWindow window) {
 		this.window = window;
 		setId(ID);
 		setText("&Add Student");
-		setToolTipText("Add a student);
+		setToolTipText("Add a student");
 	}
 	
 	

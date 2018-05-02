@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 
-public class StudentsGroup extends Student {
+public class StudentsGroup {
 	private List<Student> entries;
 	
 	private StudentsGroup parent;
@@ -23,12 +23,12 @@ public class StudentsGroup extends Student {
 	}
 
 
-	@Override
+	
 	public String getName() {
 		return name;
 	}
 
-	@Override
+	
 	public StudentsGroup getParent() {
 		return parent;
 	}

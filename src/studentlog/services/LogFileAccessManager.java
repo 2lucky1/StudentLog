@@ -10,10 +10,12 @@
 //import java.lang.reflect.Type;
 //import java.util.List;
 //
-//import com.google.gson.Gson;
-//import com.google.gson.reflect.TypeToken;
+////import com.google.gson.Gson;
+////import com.google.gson.reflect.TypeToken;
 //
 //import studentlog.model.StudentsEntry;
+//import studentlog.model.StudentsGroup;
+//import studentlog.model.ModelTreeData;
 //
 //public class LogFileAccessManager {
 //
@@ -26,7 +28,7 @@
 //
 //	public void writeLogItemsToFile(String fileName, List items) {
 //		Gson gson = new Gson();
-//		String jsonStr = gson.toJson(ModelTableData.getInstance().getItems());
+//		String jsonStr = gson.toJson(ModelTreeData.getInstance().getItems());
 //		System.out.println(jsonStr);
 //		try (Writer writer = new FileWriter(fileName)) {
 //			writer.write(jsonStr);
@@ -35,8 +37,8 @@
 //		}
 //	}
 //
-//	public List<HomeworkLogItem> readLogItemsFromFile(String fileName) {
-//		List<HomeworkLogItem> items;
+//	public List<StudentsGroup> readLogItemsFromFile(String fileName) {
+//		List<StudentsGroup> items;
 //		String jsonStr = "NULL";
 //		try (Reader reader = new FileReader(fileName)) {
 //			BufferedReader bufferedReader = new BufferedReader(reader);
