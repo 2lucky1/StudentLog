@@ -14,6 +14,7 @@ import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
+import studentlog.actions.AddStudentAction;
 import studentlog.actions.SaveMenuAction;
 
 /**
@@ -27,7 +28,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IWorkbenchAction exitAction;
 	private IWorkbenchAction aboutAction;
 	private IWorkbenchAction saveAction;
-//	private AddStudentAction addStudentAction;
+	private AddStudentAction addStudentAction;
 	private StatusLineContributionItem statusItem;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
@@ -45,7 +46,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 //		register(saveAction);
 		saveAction = ActionFactory.SAVE.create(window);
 		register(saveAction);
-//		addContactAction = new AddContactAction(window);
+		addStudentAction = new AddStudentAction(window);
 //		register(addContactAction);
 	}
 
@@ -74,7 +75,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
 		coolBar.add(toolbar);
-		toolbar.add(ActionFactory.OPEN_PERSPECTIVE_DIALOG);
+		toolbar.add(ActionFactory.OPEN_PERSPECTIVE_DIALOG.create(window));
 		toolbar.add(new Separator());
 //		toolbar.add(addContactAction);
 	}
