@@ -14,6 +14,7 @@ import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
+import studentlog.actions.AddStudentAction;
 import studentlog.actions.SaveMenuAction;
 
 /**
