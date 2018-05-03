@@ -83,6 +83,38 @@
             </command>
          </menu>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="studentlog.commands.Open"
+               label="Open">
+            <command
+                  commandId="studentlog.commands.Open"
+                  icon="icons/toolbar/folder32x32.png"
+                  label="Open"
+                  style="push">
+            </command>
+            <command
+                  commandId="studentlog.commands.Save"
+                  icon="icons/toolbar/floppy32x32.png"
+                  label="Save"
+                  style="push">
+            </command>
+            <command
+                  commandId="studentlog.commands.Delete"
+                  icon="icons/toolbar/basket32x32.png"
+                  label="Delete"
+                  style="push">
+            </command>
+            <command
+                  commandId="studentlog.commands.AddStudent"
+                  icon="icons/toolbar/plus32x32.png"
+                  label="AddStudent"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -105,6 +137,16 @@
             defaultHandler="studentlog.commands.AboutHandler"
             id="studentlog.commands.About"
             name="About">
+      </command>
+      <command
+            defaultHandler="studentlog.commands.OpenHandler"
+            id="studentlog.commands.Open"
+            name="Open">
+      </command>
+      <command
+            defaultHandler="studentlog.commands.AddStudent"
+            id="studentlog.commands.AddStudent"
+            name="AddStudent">
       </command>
    </extension>
 
