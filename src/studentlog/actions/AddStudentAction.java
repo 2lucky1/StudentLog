@@ -1,14 +1,9 @@
 package studentlog.actions;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuCreator;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.events.HelpListener;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -17,6 +12,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import studentlog.Const;
 import studentlog.ImageKeys;
+import studentlog.StudentsEntry;
+import studentlog.dialogs.AddStudentDialog;
 import studentlog.model.StudentsGroup;
 
 public class AddStudentAction extends Action implements ISelectionListener,  ActionFactory.IWorkbenchAction {
@@ -30,7 +27,7 @@ public class AddStudentAction extends Action implements ISelectionListener,  Act
 		setId(ID);
 		setText("&Add Student");
 		setToolTipText("Add a student");
-		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.PLUS.getFilePath()));
+//		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.PLUS.getFilePath()));
 		window.getSelectionService().addSelectionListener(this);
 	}
 	
@@ -60,17 +57,16 @@ public class AddStudentAction extends Action implements ISelectionListener,  Act
 	@Override
 	public void run() {
 
-		AddContactDialog d = new AddContactDialog(window.getShell());
+		AddStudentDialog d = new AddStudentDialog(window.getShell());
 		int code = d.open();
 		if (code == Window.OK) {
 			Object item = selection.getFirstElement();
-			ContactsGroup group = (ContactsGroup) item;
-			ContactsEntry entry = new ContactsEntry(group,d.getUserId(), d.getNickname(), d.getServer());
+			StudentsGroup group = (StudentsGroup) item;
+			StudentsEntry entry = new StudentsEntry(d.getName(),group.getName(), d.getAddress(), 
+													d.getCity(), d.getResult(),group);
 			group.addEntry(entry);
 		}
 	}
 	
-	
-
 	
 }

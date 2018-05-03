@@ -12,6 +12,7 @@
       </application>
    </extension>
    <extension
+         id="menu:org.eclipse.ui.main.menu"
          point="org.eclipse.ui.perspectives">
       <perspective
             name="StudentLog Perspective"
@@ -23,7 +24,7 @@
          point="org.eclipse.ui.views">
       <view
             class="studentlog.views.StudentsView"
-            icon="icons\eclipse16.png"
+            icon="icons\eclipse_logo\eclipse16.png"
             id="studentlog.views.students"
             name="Students"
             restorable="true">
@@ -39,6 +40,72 @@
         	value="icons/logo.png">
         </property>
        </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="fileMenu"
+               label="File">
+            <command
+                  commandId="studentlog.commands.Exit"
+                  icon="icons/menubar/exit.png"
+                  label="Exit"
+                  style="push">
+            </command>
+            <command
+                  commandId="studentlog.commands.Save"
+                  icon="icons/menubar/floppy.png"
+                  label="Save"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               id="editMenu"
+               label="Edit">
+            <command
+                  commandId="studentlog.commands.Delete"
+                  icon="icons/menubar/basket16x16.png"
+                  label="Delete"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               id="aboutMenu"
+               label="About">
+            <command
+                  commandId="studentlog.commands.About"
+                  icon="icons/menubar/book16x16.png"
+                  label="About"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+     
+      <command
+            defaultHandler="studentlog.commands.DeleteHandler"
+            id="studentlog.commands.Delete"
+            name="Delete">
+      </command> <command
+            defaultHandler="studentlog.commands.ExitHandler"
+            id="studentlog.commands.Exit"
+            name="Exit">
+      </command>
+      <command
+            defaultHandler="studentlog.commands.SaveHandler"
+            id="studentlog.commands.Save"
+            name="Save">
+      </command>
+      <command
+            defaultHandler="studentlog.commands.AboutHandler"
+            id="studentlog.commands.About"
+            name="About">
+      </command>
    </extension>
 
 </plugin>

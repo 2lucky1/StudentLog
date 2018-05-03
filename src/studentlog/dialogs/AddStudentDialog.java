@@ -11,6 +11,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import studentlog.services.InputVerifier;
+
 public class AddStudentDialog extends Dialog {
 	private Text nameText;
 
@@ -20,17 +22,13 @@ public class AddStudentDialog extends Dialog {
 	
 	private Text cityText;
 	
-	private Text result;
-
-//	private Text serverText;
-
-//	private Text nicknameText;
-
-//	private String userId;
-
-//	private String server;
-
-//	private String nickname;
+	private Text resultText;
+	
+	private String name;
+	private String group;
+	private String address;
+	private String city;
+	private String result;
 
 	public AddStudentDialog(Shell parentShell) {
 		super(parentShell);
@@ -70,44 +68,80 @@ public class AddStudentDialog extends Dialog {
 		GridData gridData = new GridData(GridData.FILL, GridData.FILL, true, false);
 		gridData.widthHint = convertHeightInCharsToPixels(20);
 		addressText.setLayoutData(gridData);
+		
+		Label resultLabel = new Label(composite, SWT.NONE);
+		resultLabel.setText("&Result:");
+		resultLabel.setLayoutData(new GridData(GridData.END, GridData.CENTER, true, false));
 
+		resultText = new Text(composite, SWT.BORDER);
+		resultText.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, false));
+		
 		return composite;
 	}
 
 	@Override
 	protected void okPressed() {
-		nickname = nicknameText.getText();
-		server = serverText.getText();
-		userId = userIdText.getText();
+		name = nameText.getText();
+		group = groupText.getText();
+		address = addressText.getText();
+		city = cityText.getText();
+		result = resultText.getText();
 
-		if (nickname.equals("")) { //$NON-NLS-1$
-			MessageDialog.openError(getShell(), "Invalid Nickname", //$NON-NLS-1$
-					"Nickname field must not be blank."); //$NON-NLS-1$
+		if(InputVerifier.verifyName(name)) {
+			MessageDialog.openError(getShell(), "Invalid name", //$NON-NLS-1$
+					"Name field must contains first and last name, "
+					+ "begins with capital letter, must not contains digits"); //$NON-NLS-1$
 			return;
 		}
-		if (server.equals("")) { //$NON-NLS-1$
-			MessageDialog.openError(getShell(), "Invalid Server", //$NON-NLS-1$
-					"Server field must not be blank."); //$NON-NLS-1$
+		
+		if(InputVerifier.verifyGroupNumber(group)) {
+			MessageDialog.openError(getShell(), "Invalid group number", //$NON-NLS-1$
+					"Group field must contains an integer number."); //$NON-NLS-1$
 			return;
 		}
-		if (userId.equals("")) { //$NON-NLS-1$
-			MessageDialog.openError(getShell(), "Invalid User id", //$NON-NLS-1$
-					"User id field must not be blank."); //$NON-NLS-1$
+		
+		if(InputVerifier.verifyAddress(address)) {
+			MessageDialog.openError(getShell(), "Invalid address", //$NON-NLS-1$
+					"Address field must contain street name, comma and address number,"
+					+ " street name must begins with capital letter."); //$NON-NLS-1$
 			return;
 		}
-
+		
+		if(InputVerifier.verifyCity(city)) {
+			MessageDialog.openError(getShell(), "Invalid city name", //$NON-NLS-1$
+					"City field must contains a city name, which begins with a capital letter"); //$NON-NLS-1$
+			return;
+		}
+		
+		if(InputVerifier.verifyResultByFivePointSystem(result)) {
+			MessageDialog.openError(getShell(), "Invalid result", //$NON-NLS-1$
+					"Result field must contains a mark from 1 to 5 point, only integers are allowed."); //$NON-NLS-1$
+			return;
+		}
 		super.okPressed();
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getName() {
+		return name;
 	}
 
-	public String getServer() {
-		return server;
+	public String getGroup() {
+		return group;
 	}
 
-	public String getNickname() {
-		return nickname;
+
+	public String getAddress() {
+		return address;
 	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public String getResult() {
+		return result;
+	}
+	
 }

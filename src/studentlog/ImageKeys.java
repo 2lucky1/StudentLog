@@ -6,7 +6,7 @@ public enum ImageKeys {
 	OPENED_FOLDER(""),
 	STUDENT_ICON("icons/tree/head.png"),
 	DEFAULT_STUDENT_IMAGE(""),
-	PLUS(""),
+	PLUS("icons/toolbar/plus.png"),
 	FLLOPPY("icons/menubar/floppy.png"),
 	BASKET("");
 	
