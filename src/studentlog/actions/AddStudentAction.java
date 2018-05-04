@@ -12,7 +12,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import studentlog.Const;
 import studentlog.ImageKeys;
-import studentlog.StudentsEntry;
+import studentlog.model.StudentsEntry;
 import studentlog.dialogs.AddStudentDialog;
 import studentlog.model.StudentsGroup;
 

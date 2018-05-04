@@ -87,8 +87,8 @@
             allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
-               id="studentlog.commands.Open"
-               label="Open">
+               id="studentlog.commands.Toolbar"
+               label="Toolbar">
             <command
                   commandId="studentlog.commands.Open"
                   icon="icons/toolbar/folder32x32.png"

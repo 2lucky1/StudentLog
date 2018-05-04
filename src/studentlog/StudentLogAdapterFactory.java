@@ -8,6 +8,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 
 import studentlog.model.Student;
+import studentlog.model.StudentsEntry;
 import studentlog.model.StudentsGroup;
 
 public class StudentLogAdapterFactory implements IAdapterFactory {
