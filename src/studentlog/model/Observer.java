@@ -1,8 +1,7 @@
 package studentlog.model;
 
-import java.util.Map;
-
+import java.util.List;
 
 public interface Observer {
-	void update (Map<String, String[]> items);
+	void update (List<StudentsGroup> items);
 }
