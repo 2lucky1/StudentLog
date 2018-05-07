@@ -12,7 +12,7 @@ public class StudentsGroup extends Student {
 	
 	private String name;
 	
-	private ListenerList listeners;
+	transient private ListenerList listeners;
 	
 //	private String fileName = "students.txt";
 

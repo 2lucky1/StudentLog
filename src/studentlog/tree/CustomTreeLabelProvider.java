@@ -11,6 +11,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import studentlog.Const;
 import studentlog.ImageKeys;
+import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
 
 public class CustomTreeLabelProvider implements ILabelProvider {
@@ -25,15 +26,20 @@ public class CustomTreeLabelProvider implements ILabelProvider {
 	private static String studentImgLocation = "D:\\Muntian Nikolai\\git\\StudentLog\\icons\\head.png";
 
 	public CustomTreeLabelProvider() {
-		try {
-//			folderImg = new Image(null, new FileInputStream(ImageKeys.CLOSED_FOLDER.getFilePath()));
+//		try {
+			// folderImg = new Image(null, new
+			// FileInputStream(ImageKeys.CLOSED_FOLDER.getFilePath()));
 			System.out.println(Const.BUNDLE_ID.getValue());
 			System.out.println(ImageKeys.CLOSED_FOLDER.getFilePath());
-			folderImg = AbstractUIPlugin.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.CLOSED_FOLDER.getFilePath()).createImage();
-			studentIconImg = new Image(null, new FileInputStream(studentImgLocation));
-		} catch (FileNotFoundException e) {
-			System.out.println("Pictur is not found");
-		}
+			folderImg = AbstractUIPlugin
+					.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.CLOSED_FOLDER.getFilePath())
+					.createImage();
+			studentIconImg = AbstractUIPlugin
+					.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.STUDENT_ICON.getFilePath())
+					.createImage();
+//		} catch (FileNotFoundException e) {
+//			System.out.println("Pictur is not found");
+//		}
 	}
 
 	@Override
@@ -65,14 +71,17 @@ public class CustomTreeLabelProvider implements ILabelProvider {
 	public Image getImage(Object element) {
 		if (element instanceof StudentsGroup) {
 			System.out.println("instanceof StudentGroup");
-			return studentIconImg;
+			return folderImg;
 		}
-		System.out.println("group image is used");
-		return folderImg;
+		System.out.println("student image is used");
+		return studentIconImg;
 	}
 
 	@Override
 	public String getText(Object element) {
+		if (element instanceof Student) {
+			return ((Student) element).getName();
+		}
 		return element.toString();
 	}
 
