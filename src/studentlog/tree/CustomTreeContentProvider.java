@@ -33,13 +33,13 @@ public class CustomTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		return (Object[])((StudentsGroup) inputElement).getEntries();
+		return ((StudentsGroup) inputElement).getChildren().toArray();
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof StudentsGroup) {
-			return ((StudentsGroup) parentElement).getEntries();
+			return ((StudentsGroup) parentElement).getChildren().toArray();
 		}
 		System.out.println("Elment has no children");
 		return null;
@@ -47,7 +47,6 @@ public class CustomTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
-		// // TODO Auto-generated method stub
 		// return getParentOfEle(element);
 		if (element instanceof Student) {
 			return ((Student) element).getParent();
@@ -60,7 +59,7 @@ public class CustomTreeContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) {
 		if (element instanceof StudentsGroup) {
-			return ((StudentsGroup) element).getEntries().length > 0;
+			return ((StudentsGroup) element).getChildren().size() > 0;
 		}
 		return false;
 	}

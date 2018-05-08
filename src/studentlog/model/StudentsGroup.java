@@ -6,11 +6,12 @@ import java.util.List;
 import org.eclipse.core.runtime.ListenerList;
 
 public class StudentsGroup extends Student {
-	private List<Student> entries;
-	
-	private StudentsGroup parent;
 	
 	private String name;
+	
+	transient private StudentsGroup parent;
+	
+	private List<Student> children;
 	
 	transient private ListenerList listeners;
 	
@@ -38,33 +39,36 @@ public class StudentsGroup extends Student {
 		fireStudentsChanged(null);
 	}
 
-	public void addEntry(Student entry) {
-		if (entries == null) {
-			entries = new ArrayList(5);
+	public void addEntry(Student childe) {
+		if (children == null) {
+			children = new ArrayList<Student>(5);
 		}
-		entries.add(entry);
+		children.add(childe);
 		fireStudentsChanged(null);
 	}
 
-	public void removeEntry(Student entry) {
-		if (entries != null) {
-			entries.remove(entry);
-			if (entries.isEmpty()) {
-				entries = null;
+	public void removeEntry(Student childe) {
+		if (children != null) {
+			children.remove(childe);
+			if (children.isEmpty()) {
+				children = null;
 			}
 		}
 		fireStudentsChanged(null);
 	}
 
-	public Student[] getEntries() {
-		if (entries != null)
+	public List<Student> getChildren() {
+		/*if (entries != null) {
 			return (Student[]) entries.toArray(new Student[entries.size()]);
-		return new Student[0];
+		}
+		return new Student[0];*/
+		return children != null ? children : new ArrayList<Student>();
 	}
 	
 	public void addStudentsListener(IStudentsListener listener) {
-		if (parent != null)
+		if (parent != null) {
 			parent.addStudentsListener(listener);
+		}
 		else {
 			if (listeners == null)
 				listeners = new ListenerList();
@@ -73,8 +77,9 @@ public class StudentsGroup extends Student {
 	}
 	
 	public void removeStudentsListener(IStudentsListener listener) {
-		if (parent != null)
+		if (parent != null) {
 			parent.removeStudentsListener(listener);
+		}
 		else {
 			if (listeners != null) {
 				listeners.remove(listener);

@@ -8,41 +8,39 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import studentlog.model.StudentsEntry;
+import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
-import studentlog.model.TreeModel;
 
 public class LogFileAccessManager {
 
-//	private Type itemsListType = new TypeToken<List<StudentsEntry>>() {
-//	}.getType();
-	
-	private Type rootType = new TypeToken<StudentsGroup>() {}.getType();
+	// private Type itemsListType = new TypeToken<List<StudentsEntry>>() {
+	// }.getType();
+
+	private Type rootType = new TypeToken<StudentsGroup>() {
+	}.getType();
 
 	public LogFileAccessManager() {
 		super();
 	}
 
-	public void writeLogItemsToFile(String fileName, StudentsGroup root){
+	public void writeLogItemsToFile(String logFilePath, StudentsGroup root) {
 		Gson gson = new Gson();
-		String jsonStr = gson.toJson(TreeModel.getInstance().getItems());
+		String jsonStr = gson.toJson(root);
 		System.out.println("Jason string " + jsonStr);
-		try (Writer writer = new FileWriter(fileName)) {
+		try (Writer writer = new FileWriter(logFilePath)) {
 			writer.write(jsonStr);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public StudentsGroup readLogItemsFromFile(String fileName) {
-		StudentsGroup root;
-		String jsonStr = "NULL";
-		try (Reader reader = new FileReader(fileName)) {
+	public StudentsGroup readLogItemsFromFile(String logFilePath) {
+		String jsonStr = null;
+		try (Reader reader = new FileReader(logFilePath)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
 		} catch (FileNotFoundException e) {
@@ -51,21 +49,21 @@ public class LogFileAccessManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		root = new Gson().fromJson(jsonStr, rootType);
+		StudentsGroup root = new Gson().fromJson(jsonStr, rootType);
 		return root;
-		
-//		List<StudentsGroup> items;
-//		String jsonStr = "NULL";
-//		try (Reader reader = new FileReader(fileName)) {
-//			BufferedReader bufferedReader = new BufferedReader(reader);
-//			jsonStr = bufferedReader.readLine();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		items = new Gson().fromJson(jsonStr, itemsListType);
-//		return items;
-//		return null;
+
+		// List<StudentsGroup> items;
+		// String jsonStr = "NULL";
+		// try (Reader reader = new FileReader(fileName)) {
+		// BufferedReader bufferedReader = new BufferedReader(reader);
+		// jsonStr = bufferedReader.readLine();
+		// } catch (FileNotFoundException e) {
+		// e.printStackTrace();
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
+		// items = new Gson().fromJson(jsonStr, itemsListType);
+		// return items;
+		// return null;
 	}
 }

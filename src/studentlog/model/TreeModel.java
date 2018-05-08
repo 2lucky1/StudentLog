@@ -12,6 +12,8 @@ import studentlog.services.LogFileAccessManager;
 
 public class TreeModel implements Observable {
 
+	private static final String DEFAULT_FILE_NAME = "studentlog.json";
+
 	private List<Observer> observers = new ArrayList<Observer>();
 
 	// private List<StudentsGroup> items;
@@ -19,12 +21,11 @@ public class TreeModel implements Observable {
 
 	private StudentsGroup root;
 	private LogFileAccessManager logFileAccessManager;
-	private String fileName = "log.txt";
 	private static TreeModel instance;
 
 	private TreeModel() {
 		super();
-		initTreeModel(fileName);
+		initTreeModel();
 	}
 
 	public static TreeModel getInstance() {
@@ -52,7 +53,7 @@ public class TreeModel implements Observable {
 	// return items;
 	// }
 
-	public StudentsGroup getItems() {
+	public StudentsGroup getRoot() {
 		return root;
 	}
 
@@ -61,46 +62,39 @@ public class TreeModel implements Observable {
 		notifyObservers(observers);
 	}
 
-	private void initTreeModel(String fileName) {
-//		if (!checkFileExistance(fileName)) {
-//			File file = new File(fileName);
-//			try {
-//				file.createNewFile();
-//			} catch (IOException e) {
-//				System.out.println("File creating problem");
-//				e.printStackTrace();
-//			}
-//		}
-		
-		root = new StudentsGroup(null, "root");
-		StudentsGroup folder = new StudentsGroup(root, "Folder");
-		
-		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
-		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
-		
-		StudentsEntry vasya = new StudentsEntry("Вася", "1", "Красная,3", "Днепр", "5", firstGroup);
-		StudentsEntry petya = new StudentsEntry("Петя", "1", "Желтая,75", "Днепр", "3", firstGroup);
-		StudentsEntry vanya = new StudentsEntry("Ваня", "2", "Зеленая,36", "Днепр", "4", secondGroup);
-		StudentsEntry sasha = new StudentsEntry("Саша", "2", "Синяя,8", "Днепр", "2", secondGroup);
-		
-		firstGroup.addEntry(vasya);
-		firstGroup.addEntry(petya);
-		
-		secondGroup.addEntry(vanya);
-		secondGroup.addEntry(sasha);
-		
-		folder.addEntry(firstGroup);
-		folder.addEntry(secondGroup);
-		
-		root.addEntry(folder);
-		
-//		logFileAccessManager = new LogFileAccessManager();
-//		
-//		
-//		root = logFileAccessManager.readLogItemsFromFile(fileName);
+	public String getLogFilePath() {
+		return (System.getProperty("user.dir") + "/" + DEFAULT_FILE_NAME);
 	}
 
-	private boolean checkFileExistance(String fileName) {
-		return Files.exists(Paths.get(fileName));
+	private void initTreeModel() {
+		
+//		 logFileAccessManager = new LogFileAccessManager();
+//		 root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
+
+		 root = new StudentsGroup(null, "root");
+		 StudentsGroup folder = new StudentsGroup(root, "Folder");
+		
+		 StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
+		 StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+		
+		 StudentsEntry vasya = new StudentsEntry("Вася", "1", "Красная,3", "Днепр",
+		 "5", firstGroup);
+		 StudentsEntry petya = new StudentsEntry("Петя", "1", "Желтая,75", "Днепр",
+		 "3", firstGroup);
+		 StudentsEntry vanya = new StudentsEntry("Ваня", "2", "Зеленая,36", "Днепр",
+		 "4", secondGroup);
+		 StudentsEntry sasha = new StudentsEntry("Саша", "2", "Синяя,8", "Днепр", "2",
+		 secondGroup);
+		
+		 firstGroup.addEntry(vasya);
+		 firstGroup.addEntry(petya);
+		
+		 secondGroup.addEntry(vanya);
+		 secondGroup.addEntry(sasha);
+		
+		 folder.addEntry(firstGroup);
+		 folder.addEntry(secondGroup);
+		
+		 root.addEntry(folder);
 	}
 }

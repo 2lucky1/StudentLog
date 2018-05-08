@@ -15,7 +15,7 @@ public class StudentsEntry extends Student {
 
 	private final String result;
 
-	private final StudentsGroup group;
+	transient private final StudentsGroup group;
 	
 	public StudentsEntry(String name, String groupNumber, String address, String city, String result,
 			StudentsGroup group) {

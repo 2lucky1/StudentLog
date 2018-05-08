@@ -1,5 +1,7 @@
 package studentlog.model;
 
+import java.io.Serializable;
+
 import org.eclipse.core.runtime.PlatformObject;
 
 public abstract class Student extends PlatformObject {

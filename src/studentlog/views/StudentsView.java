@@ -34,7 +34,7 @@ public class StudentsView extends ViewPart implements Observer {
 		super.getSite().setSelectionProvider(treeViewer);
 		treeViewer.setContentProvider(new CustomTreeContentProvider());
 		treeViewer.setLabelProvider(new CustomTreeLabelProvider());
-		root = TreeModel.getInstance().getItems();
+		root = TreeModel.getInstance().getRoot();
 //		items = TreeModel.getInstance().getItems();
 		treeViewer.setInput(root);
 		
