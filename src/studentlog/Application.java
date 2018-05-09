@@ -1,5 +1,7 @@
 package studentlog;
 
+import java.io.File;
+
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;

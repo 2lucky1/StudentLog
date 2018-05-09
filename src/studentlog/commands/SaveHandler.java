@@ -28,6 +28,8 @@ public class SaveHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("Save menu");
+//		File f = new File("test.txt");
+//		System.out.println("second point" + f.getAbsolutePath());
 		LogFileAccessManager logFileAccessManager = new LogFileAccessManager();
 		logFileAccessManager.writeLogItemsToFile(TreeModel.getInstance().getLogFilePath(), TreeModel.getInstance().getRoot());
 		return null;

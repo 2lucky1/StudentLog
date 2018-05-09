@@ -12,7 +12,6 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
 
 public class LogFileAccessManager {
@@ -43,27 +42,33 @@ public class LogFileAccessManager {
 		try (Reader reader = new FileReader(logFilePath)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
+			StudentsGroup root = new Gson().fromJson(jsonStr, rootType);
+			return root;
+			//////
+//			if(root==null) {
+//				root = getDefaultLogItems();
+//			}
+//			return root;
+			//////
 		} catch (FileNotFoundException e) {
 			System.out.println("LogFileAccessor: file doesnt exists");
-			e.printStackTrace();
+			return getDefaultLogItems();
 		} catch (IOException e) {
-			e.printStackTrace();
+			return getDefaultLogItems();
 		}
-		StudentsGroup root = new Gson().fromJson(jsonStr, rootType);
-		return root;
+	}
+	
+	private StudentsGroup getDefaultLogItems() {
+		StudentsGroup root = new StudentsGroup(null, "root");
+		StudentsGroup folder = new StudentsGroup(root, "Folder");
 
-		// List<StudentsGroup> items;
-		// String jsonStr = "NULL";
-		// try (Reader reader = new FileReader(fileName)) {
-		// BufferedReader bufferedReader = new BufferedReader(reader);
-		// jsonStr = bufferedReader.readLine();
-		// } catch (FileNotFoundException e) {
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		// items = new Gson().fromJson(jsonStr, itemsListType);
-		// return items;
-		// return null;
+		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
+		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+		
+		folder.addEntry(firstGroup);
+		folder.addEntry(secondGroup);
+
+		root.addEntry(folder);
+		return root;
 	}
 }
