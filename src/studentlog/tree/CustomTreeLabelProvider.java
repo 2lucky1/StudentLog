@@ -31,6 +31,7 @@ public class CustomTreeLabelProvider implements ILabelProvider {
 			// FileInputStream(ImageKeys.CLOSED_FOLDER.getFilePath()));
 			System.out.println(Const.BUNDLE_ID.getValue());
 			System.out.println(ImageKeys.CLOSED_FOLDER.getFilePath());
+//			System.out.println("LinkedResources: " + "floppy16x16");
 			folderImg = AbstractUIPlugin
 					.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.CLOSED_FOLDER.getFilePath())
 					.createImage();

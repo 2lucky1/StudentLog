@@ -24,7 +24,7 @@
          point="org.eclipse.ui.views">
       <view
             class="studentlog.views.StudentsView"
-            icon="icons\eclipse_logo\eclipse16.png"
+            icon="resources/icons/eclipse_logo/eclipse16.png"
             id="studentlog.views.students"
             name="Students"
             restorable="true">
@@ -51,13 +51,13 @@
                label="File">
             <command
                   commandId="studentlog.commands.Exit"
-                  icon="icons/menubar/exit.png"
+                  icon="resources/icons/menubar/exit.png"
                   label="Exit"
                   style="push">
             </command>
             <command
                   commandId="studentlog.commands.Save"
-                  icon="icons/menubar/floppy.png"
+                  icon="resources/icons/menubar/floppy.png"
                   label="Save"
                   style="push">
             </command>
@@ -67,7 +67,7 @@
                label="Edit">
             <command
                   commandId="studentlog.commands.Delete"
-                  icon="icons/menubar/basket16x16.png"
+                  icon="resources/icons/menubar/basket16x16.png"
                   label="Delete"
                   style="push">
             </command>
@@ -77,7 +77,7 @@
                label="About">
             <command
                   commandId="studentlog.commands.About"
-                  icon="icons/menubar/book16x16.png"
+                  icon="resources/icons/menubar/book16x16.png"
                   label="About"
                   style="push">
             </command>
@@ -91,26 +91,32 @@
                label="Toolbar">
             <command
                   commandId="studentlog.commands.Open"
-                  icon="icons/toolbar/folder32x32.png"
+                  icon="resources/icons/toolbar/folder32x32.png"
                   label="Open"
                   style="push">
             </command>
             <command
                   commandId="studentlog.commands.Save"
-                  icon="icons/toolbar/floppy32x32.png"
+                  icon="resources/icons/toolbar/floppy32x32.png"
                   label="Save"
                   style="push">
             </command>
             <command
                   commandId="studentlog.commands.Delete"
-                  icon="icons/toolbar/basket32x32.png"
+                  icon="resources/icons/toolbar/basket32x32.png"
                   label="Delete"
                   style="push">
             </command>
             <command
                   commandId="studentlog.commands.AddStudent"
-                  icon="icons/toolbar/plus32x32.png"
+                  icon="resources/icons/toolbar/plus32x32.png"
                   label="AddStudent"
+                  style="push">
+            </command>
+            <command
+                  commandId="studentlog.commands.OpenProfile"
+                  icon="resources/icons/toolbar/user 32x32.png"
+                  label="OpenProfile"
                   style="push">
             </command>
          </toolbar>
@@ -148,6 +154,21 @@
             id="studentlog.commands.AddStudent"
             name="AddStudent">
       </command>
+      <command
+            defaultHandler="studentlog.commands.OpenProfileHandler"
+            id="studentlog.commands.OpenProfile"
+            name="OpenProfile">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="studentlog.editors.StudentProfileEditor"
+            default="false"
+            icon="resources/icons/tree/head.png"
+            id="studentlog.editors.studentprofile"
+            name="StudentProfile">
+      </editor>
    </extension>
 
 </plugin>

@@ -1,14 +1,14 @@
 package studentlog;
 
 public enum ImageKeys {
-	LOGO("icons/logo.png"),
-	CLOSED_FOLDER("icons/tree/folder.png"),
+	LOGO("resources/icons/logo.png"),
+	CLOSED_FOLDER("resources/icons/tree/folder.png"),
 	OPENED_FOLDER(""),
-	STUDENT_ICON("icons/tree/head.png"),
+	STUDENT_ICON("resources/icons/tree/head.png"),
 	DEFAULT_STUDENT_IMAGE(""),
-	PLUS("icons/toolbar/plus.png"),
-	FLLOPPY("icons/menubar/floppy.png"),
-	BASKET("");
+	PLUS("resources/icons/toolbar/plus.png"),
+	FLLOPPY("resources/icons/menubar/floppy.png"),
+	BASKET("resources/icons/menubar/basket16x16.png");
 	
 	private String filePath;
 	

@@ -1,0 +1,112 @@
+package studentlog.ui;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
+import studentlog.services.ProjectPathFinder;
+
+public class StudentProfileEditorPanel extends Composite {
+
+	private Label labelName;
+	private Text textName;
+	private Label labelGroup;
+	private Text textGroup;
+	private Label labelAddress;
+	private Text textAddress;
+	private Label labelCity;
+	private Text textCity;
+	private Label labelResult;
+	private Text textResult;
+	private Label labelImage;
+	private String imagePath;
+
+	public StudentProfileEditorPanel(Composite parent, int style) {
+		super(parent, style);
+		createContent(parent);
+		// TODO Auto-generated constructor stub
+	}
+
+	private void createContent(Composite parent) {
+		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		GridLayout gridLayout = new GridLayout(2, false);
+		gridLayout.verticalSpacing = 10;
+		gridLayout.horizontalSpacing = 40;
+		gridLayout.marginLeft = 12;
+		gridLayout.marginTop = 10;
+
+		setLayout(gridLayout);
+		setBackground(parent.getShell().getBackground());
+
+		labelName = new Label(this, SWT.NONE);
+		labelName.setText("Name");
+
+		textName = new Text(this, SWT.BORDER);
+		textName.setToolTipText("Student name");
+		GridData gridData = new GridData();
+		gridData.widthHint = 150;
+		gridData.heightHint = 15;
+		gridData.horizontalIndent = -37;
+		textName.setLayoutData(gridData);
+
+		labelGroup = new Label(this, SWT.NONE);
+		labelGroup.setText("Group");
+
+		textGroup = new Text(this, SWT.BORDER);
+		textGroup.setToolTipText("Student group");
+		gridData = new GridData();
+		gridData.widthHint = 100;
+		gridData.heightHint = 15;
+		gridData.horizontalIndent = -37;
+		textGroup.setLayoutData(gridData);
+
+		labelAddress = new Label(this, SWT.NONE);
+		labelGroup.setText("Address");
+
+		textAddress = new Text(this, SWT.BORDER);
+		textAddress.setToolTipText("Address");
+		gridData = new GridData();
+		gridData.widthHint = 200;
+		gridData.heightHint = 15;
+		gridData.horizontalIndent = -37;
+		textAddress.setLayoutData(gridData);
+
+		labelCity = new Label(this, SWT.NONE);
+		labelCity.setText("Group");
+
+		textCity = new Text(this, SWT.BORDER);
+		textCity.setToolTipText("City");
+		gridData = new GridData();
+		gridData.widthHint = 100;
+		gridData.heightHint = 15;
+		gridData.horizontalIndent = -37;
+		textCity.setLayoutData(gridData);
+
+		labelResult = new Label(this, SWT.NONE);
+		labelResult.setText("Result");
+
+		textResult = new Text(this, SWT.BORDER);
+		textResult.setToolTipText("Result");
+		gridData = new GridData();
+		gridData.widthHint = 100;
+		gridData.heightHint = 15;
+		gridData.horizontalIndent = -37;
+		textResult.setLayoutData(gridData);
+
+//		labelImage = new Label(this, SWT.NONE);
+//		if (imagePath == null) {
+//			labelImage.setImage(new Image(this.getDisplay(), ProjectPathFinder.getStudentsPictures() + "imagenotfound.png"));
+//		}
+//		labelImage.setImage(new Image(this.getDisplay(), imagePath));
+//		gridData = new GridData();
+//		gridData.horizontalIndent = 50;
+//		gridData.verticalIndent = 10;
+//		labelImage.setLayoutData(gridData);
+
+	}
+
+}

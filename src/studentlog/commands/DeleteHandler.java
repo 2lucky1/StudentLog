@@ -19,7 +19,8 @@ public class DeleteHandler extends AbstractHandler implements ISelectionChangedL
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("Delete menu");
 		for(StudentsEntry selectedEntry : selectedItems) {
-			System.out.println(selectedEntry.getParent().getChildren().remove(selectedEntry));
+			selectedEntry.getParent().getChildren().remove(selectedEntry);
+//			System.out.println(selectedEntry.getParent().getChildren().remove(selectedEntry));
 		}
 		return null;
 	}

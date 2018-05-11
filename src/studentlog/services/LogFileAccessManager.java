@@ -42,7 +42,7 @@ public class LogFileAccessManager {
 		try (Reader reader = new FileReader(logFilePath)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
-			StudentsGroup root = new Gson().fromJson(jsonStr, rootType);
+			StudentsGroup root = new Gson().fromJson(jsonStr, StudentsGroup.class);
 			return root;
 			//////
 //			if(root==null) {

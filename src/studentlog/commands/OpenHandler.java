@@ -10,8 +10,9 @@ public class OpenHandler extends AbstractHandler {
 
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
-        MessageDialog.openInformation(HandlerUtil.getActiveWorkbenchWindow(
-                event).getShell(), "Info", "Info for you");
+    		
+    	//        MessageDialog.openInformation(HandlerUtil.getActiveWorkbenchWindow(
+//                event).getShell(), "Info", "Info for you");
         return null;
     }
 
