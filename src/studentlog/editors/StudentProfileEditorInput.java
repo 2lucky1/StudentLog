@@ -15,6 +15,10 @@ public class StudentProfileEditorInput implements IEditorInput{
 		this.partisipant = partisipant;
 	}
 	
+	public StudentProfileEditorInput() {
+		
+	}
+	
 	@Override
 	public <T> T getAdapter(Class<T> adapter) {
 		// TODO Auto-generated method stub

@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 
-public class StudentsGroup extends Student {
+public class StudentsGroup extends TreeItem {
 	
 	private String name;
 	
-	transient private StudentsGroup parent;
+	private StudentsGroup parent;
 	
-	private List<Student> children;
+	private List<TreeItem> children;
 	
 	transient private ListenerList listeners;
 	
@@ -39,15 +39,15 @@ public class StudentsGroup extends Student {
 		fireStudentsChanged(null);
 	}
 
-	public void addEntry(Student childe) {
+	public void addEntry(TreeItem childe) {
 		if (children == null) {
-			children = new ArrayList<Student>(5);
+			children = new ArrayList<TreeItem>(5);
 		}
 		children.add(childe);
 		fireStudentsChanged(null);
 	}
 
-	public void removeEntry(Student childe) {
+	public void removeEntry(TreeItem childe) {
 		if (children != null) {
 			children.remove(childe);
 			if (children.isEmpty()) {
@@ -57,12 +57,12 @@ public class StudentsGroup extends Student {
 		fireStudentsChanged(null);
 	}
 
-	public List<Student> getChildren() {
+	public List<TreeItem> getChildren() {
 		/*if (entries != null) {
 			return (Student[]) entries.toArray(new Student[entries.size()]);
 		}
 		return new Student[0];*/
-		return children != null ? children : new ArrayList<Student>();
+		return children != null ? children : new ArrayList<TreeItem>();
 	}
 	
 	public void addStudentsListener(IStudentsListener listener) {
@@ -103,6 +103,19 @@ public class StudentsGroup extends Student {
 			}
 		}
 	}
+	
+	
+//	public void initParent() {
+//		if(this.getChildren().size()>0) {
+//			StudentsGroup parent = this;
+//			for(TreeItem treeItem:parent.getChildren()) {
+//				if(treeItem instanceof StudentsGroup) {
+//					((StudentsGroup) treeItem).initParent();
+//				}
+//				treeItem.setParent(parent);
+//			}
+//		}
+//	}
 //	private void initialStudentsGroup(String fileName) {
 //		
 //		

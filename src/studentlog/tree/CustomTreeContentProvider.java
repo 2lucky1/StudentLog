@@ -10,6 +10,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 
 import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
+import studentlog.model.TreeItem;
 
 public class CustomTreeContentProvider implements ITreeContentProvider {
 
@@ -48,8 +49,8 @@ public class CustomTreeContentProvider implements ITreeContentProvider {
 	@Override
 	public Object getParent(Object element) {
 		// return getParentOfEle(element);
-		if (element instanceof Student) {
-			return ((Student) element).getParent();
+		if (element instanceof TreeItem) {
+			return ((TreeItem) element).getParent();
 		}
 		System.out.println("Element has no parent (CustomTreeContentProvider)");
 		return null;

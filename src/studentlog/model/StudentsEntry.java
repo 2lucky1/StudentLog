@@ -3,7 +3,7 @@ package studentlog.model;
 import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
 
-public class StudentsEntry extends Student {
+public class StudentsEntry extends TreeItem {
 
 	private final String name;
 
@@ -15,7 +15,7 @@ public class StudentsEntry extends Student {
 
 	private final String result;
 
-	transient private final StudentsGroup group;
+	private final StudentsGroup group;
 	
 	public StudentsEntry(String name, String groupNumber, String address, String city, String result,
 			StudentsGroup group) {

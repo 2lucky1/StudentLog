@@ -13,6 +13,7 @@ import studentlog.Const;
 import studentlog.ImageKeys;
 import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
+import studentlog.model.TreeItem;
 
 public class CustomTreeLabelProvider implements ILabelProvider {
 
@@ -80,8 +81,8 @@ public class CustomTreeLabelProvider implements ILabelProvider {
 
 	@Override
 	public String getText(Object element) {
-		if (element instanceof Student) {
-			return ((Student) element).getName();
+		if (element instanceof TreeItem) {
+			return ((TreeItem) element).getName();
 		}
 		return element.toString();
 	}

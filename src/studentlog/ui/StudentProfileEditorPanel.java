@@ -65,7 +65,7 @@ public class StudentProfileEditorPanel extends Composite {
 		textGroup.setLayoutData(gridData);
 
 		labelAddress = new Label(this, SWT.NONE);
-		labelGroup.setText("Address");
+		labelAddress.setText("Address");
 
 		textAddress = new Text(this, SWT.BORDER);
 		textAddress.setToolTipText("Address");
@@ -76,7 +76,7 @@ public class StudentProfileEditorPanel extends Composite {
 		textAddress.setLayoutData(gridData);
 
 		labelCity = new Label(this, SWT.NONE);
-		labelCity.setText("Group");
+		labelCity.setText("City");
 
 		textCity = new Text(this, SWT.BORDER);
 		textCity.setToolTipText("City");
