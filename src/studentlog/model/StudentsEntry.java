@@ -15,17 +15,16 @@ public class StudentsEntry extends TreeItem {
 
 	private final String result;
 
-	private final StudentsGroup group;
+	private final String  parent;
 	
-	public StudentsEntry(String name, String groupNumber, String address, String city, String result,
-			StudentsGroup group) {
+	public StudentsEntry(String parent, String name, String address, String city, String result) {
 		super();
 		this.name = name;
-		this.groupNumber = groupNumber;
+		this.groupNumber = parent;
 		this.address = address;
 		this.city = city;
 		this.result = result;
-		this.group = group;
+		this.parent = parent;
 	}
 
 	
@@ -45,18 +44,14 @@ public class StudentsEntry extends TreeItem {
 		return result;
 	}
 
-	public StudentsGroup getGroup() {
-		return group;
-	}
-
 	@Override
 	public String getName() {
 		return name;
 	}
 
 	@Override
-	public StudentsGroup getParent() {
-		return group;
+	public String getParent() {
+		return parent;
 	}
 
 }
