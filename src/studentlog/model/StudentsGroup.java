@@ -9,15 +9,15 @@ public class StudentsGroup extends TreeItem {
 	
 	private String name;
 	
-	private String parent;
+	private StudentsGroup parent;
 	
-//	private List<TreeItem> children;
+	private List<TreeItem> children;
 	
 	transient private ListenerList listeners;
 	
 //	private String fileName = "students.txt";
 
-	public StudentsGroup(String parent, String name) {
+	public StudentsGroup(StudentsGroup parent, String name) {
 		this.parent = parent;
 		this.name = name;
 //		initialStudentsGroup(fileName);
@@ -30,7 +30,7 @@ public class StudentsGroup extends TreeItem {
 	}
 
 	@Override
-	public String getParent() {
+	public StudentsGroup getParent() {
 		return parent;
 	}
 
@@ -40,22 +40,34 @@ public class StudentsGroup extends TreeItem {
 	}
 
 	public void addEntry(TreeItem childe) {
-		TreeModel.getInstance().getTreeItemsMap().get(parent).add(childe);
+		if (children == null) {
+			children = new ArrayList<TreeItem>(5);
+		}
+		children.add(childe);
+		fireStudentsChanged(null);
 	}
 
 	public void removeEntry(TreeItem childe) {
-		TreeModel.getInstance().getTreeItemsMap().get(parent).remove(childe);
+		if (children != null) {
+			children.remove(childe);
+			if (children.isEmpty()) {
+				children = null;
+			}
+		}
 		fireStudentsChanged(null);
 	}
 
 	public List<TreeItem> getChildren() {
-		return TreeModel.getInstance().getTreeItemsMap().get(this.getName());
+		/*if (entries != null) {
+			return (Student[]) entries.toArray(new Student[entries.size()]);
+		}
+		return new Student[0];*/
+		return children != null ? children : new ArrayList<TreeItem>();
 	}
 	
 	public void addStudentsListener(IStudentsListener listener) {
-		
 		if (parent != null) {
-			TreeModel.getInstance().getTreeItemsMap().get(parent).addStudentsListener(listener);
+			parent.addStudentsListener(listener);
 		}
 		else {
 			if (listeners == null)

@@ -17,9 +17,13 @@ public class TreeItem {
 		return null;
 	};
 
-	public String getParent() {
+	public StudentsGroup getParent() {
 		return null;
 	};
+	
+	public List<TreeItem> getChildren() {
+		return null;
+	}
 	
 //	public void setParent(StudentsGroup parent) {
 //		this.parent = parent;
