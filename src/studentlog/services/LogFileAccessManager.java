@@ -28,12 +28,7 @@ public class LogFileAccessManager {
 	}
 
 	public void writeLogItemsToFile(String logFilePath, StudentsGroup root) {
-//		Gson gson = new Gson();
-		/////////////////////////////
-		Gson gson = new GsonBuilder()
-	               .registerTypeAdapter(StudentsGroup.class, new MyTypeAdapter<StudentsGroup>())
-	               .create();
-		/////////////////////////////
+		Gson gson = new Gson();
 		String jsonStr = gson.toJson(root);
 		System.out.println("Jason string " + jsonStr);
 		try (Writer writer = new FileWriter(logFilePath)) {
@@ -49,13 +44,8 @@ public class LogFileAccessManager {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
 			StudentsGroup root = new Gson().fromJson(jsonStr, StudentsGroup.class);
+			root.initParent();
 			return root;
-			//////
-//			if(root==null) {
-//				root = getDefaultLogItems();
-//			}
-//			return root;
-			//////
 		} catch (FileNotFoundException e) {
 			System.out.println("LogFileAccessor: file doesnt exists");
 			return getDefaultLogItems();
@@ -63,14 +53,14 @@ public class LogFileAccessManager {
 			return getDefaultLogItems();
 		}
 	}
-	
+
 	private StudentsGroup getDefaultLogItems() {
 		StudentsGroup root = new StudentsGroup(null, "root");
 		StudentsGroup folder = new StudentsGroup(root, "Folder");
 
 		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
 		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
-		
+
 		folder.addEntry(firstGroup);
 		folder.addEntry(secondGroup);
 

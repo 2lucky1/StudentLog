@@ -15,7 +15,7 @@ public class StudentsEntry extends TreeItem {
 
 	private  String result;
 
-	private  StudentsGroup parent;
+	transient private  StudentsGroup parent;
 	
 	public StudentsEntry(){
 		

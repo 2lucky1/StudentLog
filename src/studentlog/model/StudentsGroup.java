@@ -127,17 +127,17 @@ public class StudentsGroup extends TreeItem {
 	}
 	
 	
-//	public void initParent() {
-//		if(this.getChildren().size()>0) {
-//			StudentsGroup parent = this;
-//			for(TreeItem treeItem:parent.getChildren()) {
-//				if(treeItem instanceof StudentsGroup) {
-//					((StudentsGroup) treeItem).initParent();
-//				}
-//				treeItem.setParent(parent);
-//			}
-//		}
-//	}
+	public void initParent() {
+		if(this.getChildren().size()>0) {
+			StudentsGroup parent = this;
+			for(TreeItem treeItem:parent.getChildren()) {
+				if(treeItem instanceof StudentsGroup) {
+					((StudentsGroup) treeItem).initParent();
+				}
+				treeItem.setParent(parent);
+			}
+		}
+	}
 //	private void initialStudentsGroup(String fileName) {
 //		
 //		

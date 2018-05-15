@@ -1,6 +1,5 @@
 package studentlog.services;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -19,7 +18,7 @@ public class ProjectPathFinder {
 //			filePath = Platform.resolve(pluginInternalURL).getFile(); pre 3.2 eclipse version
 			projectAbsolutePath = FileLocator.resolve(projectURL).getFile(); //after 3.2 eclipse version
 			System.out.println(projectAbsolutePath);
-			if (projectAbsolutePath.charAt(0) == File.separatorChar) { 
+			if (projectAbsolutePath.charAt(0) == '\\' || projectAbsolutePath.charAt(0) == '/') { 
 				projectAbsolutePath = projectAbsolutePath.substring(1); 
 			} 
 			System.out.println("Filepath: " + projectAbsolutePath);
@@ -31,19 +30,19 @@ public class ProjectPathFinder {
 	}
 	
 	public static String getResourcesFolderPath() {
-		return getProjectAbsolutePath() + "resources" + File.separator;
+		return getProjectAbsolutePath() + "resources/";
 	}
 	
 	public static String getIconsFolderPath() {
-		return getResourcesFolderPath() + "icons" + File.separator;
+		return getResourcesFolderPath() + "icons/";
 	}
 	
 	public static String getJSONFolderPath() {
-		return getResourcesFolderPath() + "json" + File.separator;
+		return getResourcesFolderPath() + "json/";
 	}
 	
 	public static String getStudentsPictures() {
-		return getResourcesFolderPath() + "student_pictures" + File.separator;
+		return getResourcesFolderPath() + "student_pictures/";
 	}
 	
 }

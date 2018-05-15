@@ -110,30 +110,30 @@ public class TreeModel implements Observable {
 //		System.out.println("bundle getSymbolicName: " + bundle.getSymbolicName());
 //		System.out.println("bundle getResource: " + bundle.getResource("icons/logo.png"));
 //		logFileAccessManager = new LogFileAccessManager();
-//		root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
-//		setItems(root);
+		root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
+		setItems(root);
 //		root.initParent();
 		
-		root = new StudentsGroup(null, "root");
-		StudentsGroup folder = new StudentsGroup(root, "Folder");
-
-		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
-		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
-
-		StudentsEntry vasya = new StudentsEntry("Вася", "1", "Красная,3", "Днепр", "5", firstGroup);
-		StudentsEntry petya = new StudentsEntry("Петя", "1", "Желтая,75", "Днепр", "3", firstGroup);
-		StudentsEntry vanya = new StudentsEntry("Ваня", "2", "Зеленая,36", "Днепр", "4", secondGroup);
-		StudentsEntry sasha = new StudentsEntry("Саша", "2", "Синяя,8", "Днепр", "2", secondGroup);
-
-		firstGroup.addEntry(vasya);
-		firstGroup.addEntry(petya);
-
-		secondGroup.addEntry(vanya);
-		secondGroup.addEntry(sasha);
-
-		folder.addEntry(firstGroup);
-		folder.addEntry(secondGroup);
-
-		root.addEntry(folder);
+//		root = new StudentsGroup(null, "root");
+//		StudentsGroup folder = new StudentsGroup(root, "Folder");
+//
+//		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
+//		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+//
+//		StudentsEntry vasya = new StudentsEntry("Вася", "1", "Красная,3", "Днепр", "5", firstGroup);
+//		StudentsEntry petya = new StudentsEntry("Петя", "1", "Желтая,75", "Днепр", "3", firstGroup);
+//		StudentsEntry vanya = new StudentsEntry("Ваня", "2", "Зеленая,36", "Днепр", "4", secondGroup);
+//		StudentsEntry sasha = new StudentsEntry("Саша", "2", "Синяя,8", "Днепр", "2", secondGroup);
+//
+//		firstGroup.addEntry(vasya);
+//		firstGroup.addEntry(petya);
+//
+//		secondGroup.addEntry(vanya);
+//		secondGroup.addEntry(sasha);
+//
+//		folder.addEntry(firstGroup);
+//		folder.addEntry(secondGroup);
+//
+//		root.addEntry(folder);
 	}
 }

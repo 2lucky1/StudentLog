@@ -25,6 +25,10 @@ public class TreeItem {
 		return null;
 	}
 	
+	public void setParent(StudentsGroup parent) {
+		System.out.println("method from TreeItem");
+	}
+	
 //	public void setParent(StudentsGroup parent) {
 //		this.parent = parent;
 //	}
