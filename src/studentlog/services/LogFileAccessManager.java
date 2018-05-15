@@ -48,12 +48,14 @@ public class LogFileAccessManager {
 		try (Reader reader = new FileReader(logFilePath)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
-			Gson gson = new GsonBuilder()
-		               .registerTypeAdapter(StudentsGroup.class, new MyTypeAdapter<StudentsGroup>())
-		               .create();
-			StudentsGroup root = gson.fromJson(jsonStr, StudentsGroup.class);
+			StudentsGroup root = new Gson().fromJson(jsonStr, StudentsGroup.class);
 			return root;
-			
+			//////
+//			if(root==null) {
+//				root = getDefaultLogItems();
+//			}
+//			return root;
+			//////
 		} catch (FileNotFoundException e) {
 			System.out.println("LogFileAccessor: file doesnt exists");
 			return getDefaultLogItems();

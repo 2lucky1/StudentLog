@@ -9,7 +9,7 @@ public class StudentsGroup extends TreeItem {
 	
 	private String name;
 	
-	private StudentsGroup parent;
+	transient private StudentsGroup parent;
 	
 	private List<TreeItem> children;
 	
@@ -36,8 +36,6 @@ public class StudentsGroup extends TreeItem {
 		return parent;
 	}
 
-	
-	
 	public ListenerList getListeners() {
 		return listeners;
 	}

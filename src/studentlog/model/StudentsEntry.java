@@ -63,4 +63,30 @@ public class StudentsEntry extends TreeItem {
 		return parent;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setGroupNumber(String groupNumber) {
+		this.groupNumber = groupNumber;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public void setParent(StudentsGroup parent) {
+		this.parent = parent;
+	}
+	
+	
+
 }
