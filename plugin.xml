@@ -93,31 +93,36 @@
                   commandId="studentlog.commands.Open"
                   icon="resources/icons/toolbar/folder32x32.png"
                   label="Open"
-                  style="push">
+                  style="push"
+                  tooltip="Open log from file">
             </command>
             <command
                   commandId="studentlog.commands.Save"
                   icon="resources/icons/toolbar/floppy32x32.png"
                   label="Save"
-                  style="push">
+                  style="push"
+                  tooltip="Save the log to the file">
             </command>
             <command
                   commandId="studentlog.commands.Delete"
                   icon="resources/icons/toolbar/basket32x32.png"
                   label="Delete"
-                  style="push">
+                  style="push"
+                  tooltip="Delete students entry">
             </command>
             <command
                   commandId="studentlog.commands.AddStudent"
                   icon="resources/icons/toolbar/plus32x32.png"
                   label="AddStudent"
-                  style="push">
+                  style="push"
+                  tooltip="Add students entry">
             </command>
             <command
                   commandId="studentlog.commands.OpenProfile"
                   icon="resources/icons/toolbar/user 32x32.png"
                   label="OpenProfile"
-                  style="push">
+                  style="push"
+                  tooltip="Open students profile">
             </command>
          </toolbar>
       </menuContribution>

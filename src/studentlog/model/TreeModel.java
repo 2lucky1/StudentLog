@@ -111,6 +111,7 @@ public class TreeModel implements Observable {
 //		System.out.println("bundle getResource: " + bundle.getResource("icons/logo.png"));
 //		logFileAccessManager = new LogFileAccessManager();
 //		root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
+//		setItems(root);
 //		root.initParent();
 		
 		root = new StudentsGroup(null, "root");

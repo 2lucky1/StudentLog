@@ -5,17 +5,21 @@ import studentlog.model.StudentsGroup;
 
 public class StudentsEntry extends TreeItem {
 
-	private final String name;
+	private  String name;
 
-	private final String groupNumber;
+	private  String groupNumber;
 
-	private final String address;
+	private  String address;
 
-	private final String city;
+	private  String city;
 
-	private final String result;
+	private  String result;
 
-	private final StudentsGroup group;
+	private  StudentsGroup parent;
+	
+	public StudentsEntry(){
+		
+	}
 	
 	public StudentsEntry(String name, String groupNumber, String address, String city, String result,
 			StudentsGroup group) {
@@ -25,7 +29,7 @@ public class StudentsEntry extends TreeItem {
 		this.address = address;
 		this.city = city;
 		this.result = result;
-		this.group = group;
+		this.parent = group;
 	}
 
 	
@@ -46,7 +50,7 @@ public class StudentsEntry extends TreeItem {
 	}
 
 	public StudentsGroup getGroup() {
-		return group;
+		return parent;
 	}
 
 	@Override
@@ -56,7 +60,7 @@ public class StudentsEntry extends TreeItem {
 
 	@Override
 	public StudentsGroup getParent() {
-		return group;
+		return parent;
 	}
 
 }

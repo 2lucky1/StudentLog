@@ -16,6 +16,8 @@ public class StudentsGroup extends TreeItem {
 	transient private ListenerList listeners;
 	
 //	private String fileName = "students.txt";
+	
+	public StudentsGroup() {};
 
 	public StudentsGroup(StudentsGroup parent, String name) {
 		this.parent = parent;
@@ -32,6 +34,28 @@ public class StudentsGroup extends TreeItem {
 	@Override
 	public StudentsGroup getParent() {
 		return parent;
+	}
+
+	
+	
+	public ListenerList getListeners() {
+		return listeners;
+	}
+
+	public void setListeners(ListenerList listeners) {
+		this.listeners = listeners;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setParent(StudentsGroup parent) {
+		this.parent = parent;
+	}
+
+	public void setChildren(List<TreeItem> children) {
+		this.children = children;
 	}
 
 	public void rename(String newName) {
