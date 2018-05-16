@@ -11,7 +11,9 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import studentlog.Const;
 import studentlog.ImageKeys;
+import studentlog.model.ITreeItem;
 import studentlog.model.Student;
+import studentlog.model.StudentsEntry;
 import studentlog.model.StudentsGroup;
 import studentlog.model.TreeItem;
 
@@ -71,20 +73,15 @@ public class CustomTreeLabelProvider implements ILabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		if (element instanceof StudentsGroup) {
-			System.out.println("instanceof StudentGroup");
-			return folderImg;
+		if (element instanceof StudentsEntry) {
+			return studentIconImg;
 		}
-		System.out.println("student image is used");
-		return studentIconImg;
+		return folderImg;
 	}
 
 	@Override
 	public String getText(Object element) {
-		if (element instanceof TreeItem) {
-			return ((TreeItem) element).getName();
-		}
-		return element.toString();
+		return ((ITreeItem) element).getName();
 	}
 
 }

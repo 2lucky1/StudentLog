@@ -10,9 +10,10 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import studentlog.model.Folder;
+import studentlog.model.Root;
 import studentlog.model.StudentsGroup;
 
 public class LogFileAccessManager {
@@ -20,14 +21,14 @@ public class LogFileAccessManager {
 	// private Type itemsListType = new TypeToken<List<StudentsEntry>>() {
 	// }.getType();
 
-	private Type rootType = new TypeToken<StudentsGroup>() {
+	private Type rootType = new TypeToken<Root>() {
 	}.getType();
 
 	public LogFileAccessManager() {
 		super();
 	}
 
-	public void writeLogItemsToFile(String logFilePath, StudentsGroup root) {
+	public void writeLogItemsToFile(String logFilePath, Root root) {
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(root);
 		System.out.println("Jason string " + jsonStr);
@@ -38,12 +39,12 @@ public class LogFileAccessManager {
 		}
 	}
 
-	public StudentsGroup readLogItemsFromFile(String logFilePath) {
+	public Root readLogItemsFromFile(String logFilePath) {
 		String jsonStr = null;
 		try (Reader reader = new FileReader(logFilePath)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
-			StudentsGroup root = new Gson().fromJson(jsonStr, StudentsGroup.class);
+			Root root = new Gson().fromJson(jsonStr, Root.class);
 //			root.initParent();
 			return root;
 		} catch (FileNotFoundException e) {
@@ -54,17 +55,18 @@ public class LogFileAccessManager {
 		}
 	}
 
-	private StudentsGroup getDefaultLogItems() {
-		StudentsGroup root = new StudentsGroup(null, "root");
-		StudentsGroup folder = new StudentsGroup(root, "Folder");
+	private Root getDefaultLogItems() {
+		Root root = new Root();
+		
+		Folder folder = new Folder(root, "Folder");
+		root.addEntry(folder);
 
-		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
-		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+		StudentsGroup firstGroup = new StudentsGroup(folder, "Group1");
+		StudentsGroup secondGroup = new StudentsGroup(folder, "Group2");
 
 		folder.addEntry(firstGroup);
 		folder.addEntry(secondGroup);
 
-		root.addEntry(folder);
 		return root;
 	}
 }

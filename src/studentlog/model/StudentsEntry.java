@@ -1,9 +1,8 @@
 package studentlog.model;
 
-import studentlog.model.Student;
-import studentlog.model.StudentsGroup;
+import java.util.List;
 
-public class StudentsEntry extends TreeItem {
+public class StudentsEntry implements ITreeItem {
 
 	private  String name;
 
@@ -63,6 +62,16 @@ public class StudentsEntry extends TreeItem {
 		return parent;
 	}
 
+	@Override
+	public List<?> getChildren() {
+		return null;
+	}
+	
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -86,7 +95,6 @@ public class StudentsEntry extends TreeItem {
 	public void setParent(StudentsGroup parent) {
 		this.parent = parent;
 	}
-	
-	
+
 
 }

@@ -1,5 +1,7 @@
 package studentlog.tree;
 
+import java.util.List;
+
 //import java.util.ArrayList;
 //import java.util.HashMap;
 //import java.util.List;
@@ -8,9 +10,7 @@ package studentlog.tree;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
-import studentlog.model.Student;
-import studentlog.model.StudentsGroup;
-import studentlog.model.TreeItem;
+import studentlog.model.ITreeItem;
 
 public class CustomTreeContentProvider implements ITreeContentProvider {
 
@@ -34,35 +34,30 @@ public class CustomTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		return ((StudentsGroup) inputElement).getChildren().toArray();
+		List<?> list = ((ITreeItem) inputElement).getChildren();
+		if (list != null) {
+			return list.toArray();
+		}
+		return null;
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof StudentsGroup) {
-			return ((StudentsGroup) parentElement).getChildren().toArray();
+		List<?> list = ((ITreeItem) parentElement).getChildren();
+		if (list != null) {
+			return list.toArray();
 		}
-		System.out.println("Elment has no children");
 		return null;
 	}
 
 	@Override
 	public Object getParent(Object element) {
-		// return getParentOfEle(element);
-		if (element instanceof TreeItem) {
-			return ((TreeItem) element).getParent();
-		}
-		System.out.println("Element has no parent (CustomTreeContentProvider)");
-		return null;
-
+		return ((ITreeItem) element).getParent();
 	}
 
 	@Override
 	public boolean hasChildren(Object element) {
-		if (element instanceof StudentsGroup) {
-			return ((StudentsGroup) element).getChildren().size() > 0;
-		}
-		return false;
+		return ((ITreeItem) element).hasChildren();
 	}
 
 	// private String getParentOfEle(Object element) {

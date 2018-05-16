@@ -9,6 +9,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import studentlog.model.Observer;
+import studentlog.model.Root;
 import studentlog.model.StudentsGroup;
 import studentlog.model.TreeModel;
 import studentlog.tree.CustomTreeContentProvider;
@@ -22,7 +23,7 @@ public class StudentsView extends ViewPart implements Observer {
 //	private List<StudentsGroup> items;
 //	private IAdapterFactory adapterFactory = new StudentLogAdapterFactory();
 	
-	private StudentsGroup root;
+	private Root root;
 	
 	public StudentsView() {
 		super();
@@ -58,8 +59,8 @@ public class StudentsView extends ViewPart implements Observer {
 //	}
 
 	@Override
-	public void update(StudentsGroup root) {
-		treeViewer.setInput(root);
+	public void update(Root root) {
+		// TODO Auto-generated method stub
 		
 	}
 

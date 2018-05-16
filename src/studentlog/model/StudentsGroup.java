@@ -5,26 +5,26 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 
-public class StudentsGroup extends TreeItem {
-	
-	private String name;
-	
-	transient private StudentsGroup parent;
-	
-	private List<TreeItem> children;
-	
-	transient private ListenerList listeners;
-	
-//	private String fileName = "students.txt";
-	
-	public StudentsGroup() {};
+public class StudentsGroup implements ITreeItem {
 
-	public StudentsGroup(StudentsGroup parent, String name) {
+	private String name;
+
+	transient private Folder parent;
+
+	private List<StudentsEntry> children = new ArrayList<StudentsEntry>();
+
+	transient private ListenerList listeners;
+
+	// private String fileName = "students.txt";
+
+	public StudentsGroup() {
+	};
+
+	public StudentsGroup(Folder parent, String name) {
 		this.parent = parent;
 		this.name = name;
-//		initialStudentsGroup(fileName);
+		// initialStudentsGroup(fileName);
 	}
-
 
 	@Override
 	public String getName() {
@@ -32,8 +32,18 @@ public class StudentsGroup extends TreeItem {
 	}
 
 	@Override
-	public StudentsGroup getParent() {
+	public ITreeItem getParent() {
 		return parent;
+	}
+
+	@Override
+	public boolean hasChildren() {
+		return children.size() > 0;
+	}
+
+	@Override
+	public List<StudentsEntry> getChildren() {
+		return children;
 	}
 
 	public ListenerList getListeners() {
@@ -48,11 +58,11 @@ public class StudentsGroup extends TreeItem {
 		this.name = name;
 	}
 
-	public void setParent(StudentsGroup parent) {
-		this.parent = parent;
+	public void setParent(Folder folder) {
+		this.parent = folder;
 	}
 
-	public void setChildren(List<TreeItem> children) {
+	public void setChildren(List<StudentsEntry> children) {
 		this.children = children;
 	}
 
@@ -61,48 +71,33 @@ public class StudentsGroup extends TreeItem {
 		fireStudentsChanged(null);
 	}
 
-	public void addEntry(TreeItem childe) {
-		if (children == null) {
-			children = new ArrayList<TreeItem>(5);
-		}
+	public void addEntry(StudentsEntry childe) {
 		children.add(childe);
 		fireStudentsChanged(null);
 	}
 
-	public void removeEntry(TreeItem childe) {
-		if (children != null) {
-			children.remove(childe);
-			if (children.isEmpty()) {
-				children = null;
-			}
+	public void removeEntry(StudentsEntry childe) {
+		children.remove(childe);
+		if (children.isEmpty()) {
+			children = null;
 		}
 		fireStudentsChanged(null);
 	}
 
-	public List<TreeItem> getChildren() {
-		/*if (entries != null) {
-			return (Student[]) entries.toArray(new Student[entries.size()]);
-		}
-		return new Student[0];*/
-		return children != null ? children : new ArrayList<TreeItem>();
-	}
-	
 	public void addStudentsListener(IStudentsListener listener) {
 		if (parent != null) {
 			parent.addStudentsListener(listener);
-		}
-		else {
+		} else {
 			if (listeners == null)
 				listeners = new ListenerList();
 			listeners.add(listener);
 		}
 	}
-	
+
 	public void removeStudentsListener(IStudentsListener listener) {
 		if (parent != null) {
 			parent.removeStudentsListener(listener);
-		}
-		else {
+		} else {
 			if (listeners != null) {
 				listeners.remove(listener);
 				if (listeners.isEmpty())
@@ -125,25 +120,21 @@ public class StudentsGroup extends TreeItem {
 			}
 		}
 	}
-	
-	
+
 	public void initParent() {
-		if(this.getChildren().size()>0) {
-			StudentsGroup parent = this;
-			for(TreeItem treeItem:parent.getChildren()) {
-				if(treeItem instanceof StudentsGroup) {
-					((StudentsGroup) treeItem).initParent();
-				}
-				treeItem.setParent(parent);
-			}
+		for (StudentsEntry entry : children) {
+			entry.setParent(this);
 		}
+		//
+		// if (this.getChildren().size() > 0) {
+		// StudentsGroup parent = this;
+		// for(TreeItem treeItem:parent.getChildren()) {
+		// if(!(treeItem instanceof StudentsGroup)) {
+		// ((StudentsGroup) treeItem).initParent();
+		// }
+		// treeItem.setParent(parent);
+		// }
+		// }
+
 	}
-//	private void initialStudentsGroup(String fileName) {
-//		
-//		
-//	}
-	
-//	public void setEntries(List<Student> entries) {
-//		this.entries = entries;
-//	}
 }

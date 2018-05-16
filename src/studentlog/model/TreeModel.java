@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+
 import studentlog.services.LogFileAccessManager;
 import studentlog.services.ProjectPathFinder;
 
@@ -28,7 +29,7 @@ public class TreeModel implements Observable {
 	// private List<StudentsGroup> items;
 	// private Map<String,String[]> items;
 
-	private StudentsGroup root;
+	private Root root;
 	private LogFileAccessManager logFileAccessManager;
 	private static TreeModel instance;
 
@@ -62,11 +63,11 @@ public class TreeModel implements Observable {
 	// return items;
 	// }
 
-	public StudentsGroup getRoot() {
+	public Root getRoot() {
 		return root;
 	}
 
-	public void setItems(StudentsGroup root) {
+	public void setItems(Root root) {
 		this.root = root;
 		notifyObservers(observers);
 	}
@@ -109,16 +110,19 @@ public class TreeModel implements Observable {
 //		System.out.println("bundle getBundleId: " + bundle.getBundleId());
 //		System.out.println("bundle getSymbolicName: " + bundle.getSymbolicName());
 //		System.out.println("bundle getResource: " + bundle.getResource("icons/logo.png"));
-//		logFileAccessManager = new LogFileAccessManager();
+		
+		
+		logFileAccessManager = new LogFileAccessManager();
 		root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
 		setItems(root);
-//		root.initParent();
 		
-//		root = new StudentsGroup(null, "root");
-//		StudentsGroup folder = new StudentsGroup(root, "Folder");
+		
+		
+//		root = new Root();
+//		Folder folder = new Folder(root, "Folder");
 //
-//		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
-//		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+//		StudentsGroup firstGroup = new StudentsGroup(folder, "Group1");
+//		StudentsGroup secondGroup = new StudentsGroup(folder, "Group2");
 //
 //		StudentsEntry vasya = new StudentsEntry("Вася", "1", "Красная,3", "Днепр", "5", firstGroup);
 //		StudentsEntry petya = new StudentsEntry("Петя", "1", "Желтая,75", "Днепр", "3", firstGroup);

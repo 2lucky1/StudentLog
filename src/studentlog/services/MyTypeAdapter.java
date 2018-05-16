@@ -27,7 +27,7 @@ class MyTypeAdapter<T> extends TypeAdapter<T> {
 		 }
 		 if(reader.nextName().equals("parent")) {
 			 reader.nextString();
-			 root.setParent(null);
+//			 root.setParent(null);
 		 }
 		 if(reader.nextName().equals("children")) {
 			reader.nextString();
@@ -75,7 +75,7 @@ class MyTypeAdapter<T> extends TypeAdapter<T> {
 	private void studentsGrouptoString(JsonWriter writer, StudentsGroup studentsGroup) throws IOException {
 		writer.beginObject();
 		writer.name("name").value(studentsGroup.getName());
-		writer.name("parent").value(studentsGroup.getParent() == null ? "null" : studentsGroup.getParent().getName());
+//		writer.name("parent").value(studentsGroup.getParent() == null ? "null" : studentsGroup.getParent().getName());
 		if (studentsGroup.getChildren() != null) {
 			writer.name("children").beginArray();
 			for (final TreeItem item : studentsGroup.getChildren()) {
