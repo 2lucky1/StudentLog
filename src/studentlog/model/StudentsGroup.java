@@ -7,6 +7,26 @@ import org.eclipse.core.runtime.ListenerList;
 
 public class StudentsGroup extends TreeItem {
 	
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String type;
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	private String name;
 	
 	private StudentsGroup parent;
@@ -19,7 +39,8 @@ public class StudentsGroup extends TreeItem {
 	
 	public StudentsGroup() {};
 
-	public StudentsGroup(StudentsGroup parent, String name) {
+	public StudentsGroup(String id, StudentsGroup parent, String name) {
+		this.id = id;
 		this.parent = parent;
 		this.name = name;
 //		initialStudentsGroup(fileName);

@@ -4,6 +4,26 @@ import studentlog.model.Student;
 import studentlog.model.StudentsGroup;
 
 public class StudentsEntry extends TreeItem {
+	
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String type;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	private  String name;
 
@@ -21,9 +41,10 @@ public class StudentsEntry extends TreeItem {
 		
 	}
 	
-	public StudentsEntry(String name, String groupNumber, String address, String city, String result,
+	public StudentsEntry(String id, String name, String groupNumber, String address, String city, String result,
 			StudentsGroup group) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.groupNumber = groupNumber;
 		this.address = address;

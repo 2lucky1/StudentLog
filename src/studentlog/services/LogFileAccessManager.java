@@ -63,11 +63,11 @@ public class LogFileAccessManager {
 	}
 	
 	private StudentsGroup getDefaultLogItems() {
-		StudentsGroup root = new StudentsGroup(null, "root");
-		StudentsGroup folder = new StudentsGroup(root, "Folder");
+		StudentsGroup root = new StudentsGroup("1", null, "root");
+		StudentsGroup folder = new StudentsGroup("2", root, "Folder");
 
-		StudentsGroup firstGroup = new StudentsGroup(root, "Group1");
-		StudentsGroup secondGroup = new StudentsGroup(root, "Group2");
+		StudentsGroup firstGroup = new StudentsGroup("3", root, "Group1");
+		StudentsGroup secondGroup = new StudentsGroup("4", root, "Group2");
 		
 		folder.addEntry(firstGroup);
 		folder.addEntry(secondGroup);

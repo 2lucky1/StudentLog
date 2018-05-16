@@ -1,22 +1,9 @@
 package studentlog;
 
-import org.eclipse.jface.action.ICoolBarManager;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.action.StatusLineContributionItem;
-import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import studentlog.actions.AddStudentAction;
-import studentlog.actions.SaveMenuAction;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of

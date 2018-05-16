@@ -62,9 +62,9 @@ public class AddStudentAction extends Action implements ISelectionListener,  Act
 		if (code == Window.OK) {
 			Object item = selection.getFirstElement();
 			StudentsGroup group = (StudentsGroup) item;
-			StudentsEntry entry = new StudentsEntry(d.getName(),group.getName(), d.getAddress(), 
-													d.getCity(), d.getResult(),group);
-			group.addEntry(entry);
+/*			StudentsEntry entry = new StudentsEntry(d.getName(),group.getName(), d.getAddress(), 
+													d.getCity(), d.getResult(),group);*/
+//			group.addEntry(entry);
 		}
 	}
 	

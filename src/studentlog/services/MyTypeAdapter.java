@@ -23,13 +23,18 @@ class MyTypeAdapter<T> extends TypeAdapter<T> {
 		 String keyValue = reader.nextString();
 		
 		 if (key.equals("name") && keyValue.equals("root")) {
-			 root = new StudentsGroup(null, keyValue);
+			 root = new StudentsGroup("1", null, keyValue);
 		 }
-		 if(reader.nextName().equals("parent")) {
+		 key = reader.nextName();
+		 System.out.println("key 1 : " + key);
+		 if(key.equals("parent")) {
 			 reader.nextString();
 			 root.setParent(null);
 		 }
-		 if(reader.nextName().equals("children")) {
+		 key = reader.nextName();
+		 System.out.println("key 2 : " + key);
+		 if(key.equals("children")) {
+			 reader.beginObject();
 			reader.nextString();
 			root.setChildren(null);
 		 }
@@ -74,8 +79,12 @@ class MyTypeAdapter<T> extends TypeAdapter<T> {
 
 	private void studentsGrouptoString(JsonWriter writer, StudentsGroup studentsGroup) throws IOException {
 		writer.beginObject();
+		writer.name("id").value(studentsGroup.getId());
+		if (studentsGroup.getParent() != null) {
+			writer.name("type").value("group");
+		}
 		writer.name("name").value(studentsGroup.getName());
-		writer.name("parent").value(studentsGroup.getParent() == null ? "null" : studentsGroup.getParent().getName());
+		writer.name("parent").value(studentsGroup.getParent() == null ? "null" : studentsGroup.getParent().getId());
 		if (studentsGroup.getChildren() != null) {
 			writer.name("children").beginArray();
 			for (final TreeItem item : studentsGroup.getChildren()) {
@@ -92,12 +101,14 @@ class MyTypeAdapter<T> extends TypeAdapter<T> {
 
 	private void studentsEntrytoString(JsonWriter writer, StudentsEntry studentsEntry) throws IOException {
 		writer.beginObject();
+		writer.name("id").value(studentsEntry.getId());
+		writer.name("type").value("entry");
 		writer.name("name").value(studentsEntry.getName());
 		writer.name("groupNumber").value(studentsEntry.getGroupNumber());
 		writer.name("address").value(studentsEntry.getAddress());
 		writer.name("city").value(studentsEntry.getCity());
 		writer.name("result").value(studentsEntry.getResult());
-		writer.name("parent").value(studentsEntry.getParent().getName());
+		writer.name("parent").value(studentsEntry.getParent().getId());
 		writer.endObject();
 	}
 }
