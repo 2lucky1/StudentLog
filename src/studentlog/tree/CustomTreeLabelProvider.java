@@ -1,9 +1,5 @@
 package studentlog.tree;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
@@ -12,38 +8,20 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import studentlog.Const;
 import studentlog.ImageKeys;
 import studentlog.model.ITreeItem;
-import studentlog.model.Student;
 import studentlog.model.StudentsEntry;
-import studentlog.model.StudentsGroup;
-import studentlog.model.TreeItem;
 
 public class CustomTreeLabelProvider implements ILabelProvider {
 
 	private Image folderImg;
 	private Image studentIconImg;
-	// private static String fileName = "folder.png";
-	// private static String workingDirectory = System.getProperty("icons");
-	// private static String imageLocation = workingDirectory + File.separator +
-	// fileName + "";
-	private static String imageLocation = "D:\\Muntian Nikolai\\git\\StudentLog\\icons\\folder.png";
-	private static String studentImgLocation = "D:\\Muntian Nikolai\\git\\StudentLog\\icons\\head.png";
 
 	public CustomTreeLabelProvider() {
-//		try {
-			// folderImg = new Image(null, new
-			// FileInputStream(ImageKeys.CLOSED_FOLDER.getFilePath()));
-			System.out.println(Const.BUNDLE_ID.getValue());
-			System.out.println(ImageKeys.CLOSED_FOLDER.getFilePath());
-//			System.out.println("LinkedResources: " + "floppy16x16");
 			folderImg = AbstractUIPlugin
 					.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.CLOSED_FOLDER.getFilePath())
 					.createImage();
 			studentIconImg = AbstractUIPlugin
 					.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.STUDENT_ICON.getFilePath())
 					.createImage();
-//		} catch (FileNotFoundException e) {
-//			System.out.println("Pictur is not found");
-//		}
 	}
 
 	@Override

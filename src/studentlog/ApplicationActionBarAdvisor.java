@@ -1,22 +1,13 @@
 package studentlog;
 
-import org.eclipse.jface.action.ICoolBarManager;
-import org.eclipse.jface.action.IMenuManager;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.StatusLineContributionItem;
-import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import studentlog.actions.AddStudentAction;
-import studentlog.actions.SaveMenuAction;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
@@ -25,68 +16,18 @@ import studentlog.actions.SaveMenuAction;
  */
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
-
-//	private IWorkbenchAction exitAction;
-//	private IWorkbenchAction aboutAction;
-//	private IWorkbenchAction saveAction;
-//	private AddStudentAction addStudentAction;
-//	private StatusLineContributionItem statusItem;
+	private StatusLineContributionItem statusItem;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
-		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	protected void makeActions(IWorkbenchWindow window) {
-//		exitAction = ActionFactory.QUIT.create(window);
-//		register(exitAction);
-//		aboutAction = ActionFactory.ABOUT.create(window);
-//		register(aboutAction);
-////		saveAction = new SaveMenuAction(window);
-////		register(saveAction);
-//		saveAction = ActionFactory.SAVE.create(window);
-//		register(saveAction);
-//		addStudentAction = new AddStudentAction(window);
-//		addStudentAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(Const.BUNDLE_ID.getValue(), ImageKeys.PLUS.getFilePath()));
-////		register(addContactAction);
-	}
-
-//	@Override
-//	protected void fillMenuBar(IMenuManager menuBar) {
-//		MenuManager fileMenu = new MenuManager("&File", "file");
-//		// hyperbolaMenu.add(addContactAction);
-//		fileMenu.add(new Separator());
-//		fileMenu.add(exitAction);
-//		fileMenu.add(saveAction);
-//		
-//		MenuManager editMenu = new MenuManager("&Edit", "edit");
-//		editMenu.add(new Separator());
-//		editMenu.add(aboutAction);
-//		
-//		MenuManager helpMenu = new MenuManager("&Help", "help");
-//		helpMenu.add(new Separator());
-//		helpMenu.add(aboutAction);
-//		
-//		menuBar.add(fileMenu);
-//		menuBar.add(editMenu);
-//		menuBar.add(helpMenu);
-//
-//	}
-//
-//	protected void fillCoolBar(ICoolBarManager coolBar) {
-//		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
-//		coolBar.add(toolbar);
-//		toolbar.add(addStudentAction);
-////		toolbar.add(new Separator());
-//		toolbar.add(addStudentAction);
-//	}
 
 	@Override
 	protected void fillStatusLine(IStatusLineManager statusLine) {
-//		statusItem = new StatusLineContributionItem("LoggedInStatus");
-//		statusItem.setText("Logged in");
-//		statusLine.add(statusItem);
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		statusItem = new StatusLineContributionItem("CurrentDateInStatus");
+		statusItem.setText("Date: " + sdf.format(date));
+		statusLine.add(statusItem);
 	}
-
 }

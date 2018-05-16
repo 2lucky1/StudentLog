@@ -37,7 +37,7 @@
          point="org.eclipse.core.runtime.products">
       <product
           application="StudentLog.product2"
-          name="Loggg">
+          name="Current Date">
       	<property
         	name="windowImage"
         	value="icons/logo.png">

@@ -13,6 +13,4 @@ public enum Const {
 	public String getValue() {
 		return value;
 	}
-
-	
 }

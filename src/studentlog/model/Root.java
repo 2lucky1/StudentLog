@@ -17,8 +17,7 @@ public class Root implements ITreeItem {
 
 	@Override
 	public ITreeItem getParent() {
-		// TODO Auto-generated method stub
-		return null;
+		return parent;
 	}
 	
 	@Override
@@ -50,8 +49,6 @@ public class Root implements ITreeItem {
 		folders.add(folder);
 	}
 
-	
-	
 	public void initParent() {
 		for (Folder folder : folders) {
 			folder.setParent(this);

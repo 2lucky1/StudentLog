@@ -31,7 +31,6 @@ public class StudentsEntry implements ITreeItem {
 		this.parent = group;
 	}
 
-	
 	public String getGroupNumber() {
 		return groupNumber;
 	}

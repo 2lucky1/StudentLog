@@ -15,7 +15,6 @@ public class StudentsGroup implements ITreeItem {
 
 	transient private ListenerList listeners;
 
-	// private String fileName = "students.txt";
 
 	public StudentsGroup() {
 	};
@@ -23,7 +22,6 @@ public class StudentsGroup implements ITreeItem {
 	public StudentsGroup(Folder parent, String name) {
 		this.parent = parent;
 		this.name = name;
-		// initialStudentsGroup(fileName);
 	}
 
 	@Override
@@ -125,16 +123,5 @@ public class StudentsGroup implements ITreeItem {
 		for (StudentsEntry entry : children) {
 			entry.setParent(this);
 		}
-		//
-		// if (this.getChildren().size() > 0) {
-		// StudentsGroup parent = this;
-		// for(TreeItem treeItem:parent.getChildren()) {
-		// if(!(treeItem instanceof StudentsGroup)) {
-		// ((StudentsGroup) treeItem).initParent();
-		// }
-		// treeItem.setParent(parent);
-		// }
-		// }
-
 	}
 }
