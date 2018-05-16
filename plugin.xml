@@ -11,6 +11,7 @@
          </run>
       </application>
    </extension>
+   
    <extension
          id="menu:org.eclipse.ui.main.menu"
          point="org.eclipse.ui.perspectives">
@@ -20,6 +21,7 @@
             id="studentlog.perspective">
       </perspective>
    </extension>
+   
    <extension
          point="org.eclipse.ui.views">
       <view
@@ -30,6 +32,7 @@
             restorable="true">
       </view>
    </extension>
+   
    <extension
          point="org.eclipse.core.runtime.products">
       <product
@@ -41,6 +44,7 @@
         </property>
        </product>
    </extension>
+   
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
@@ -83,6 +87,7 @@
             </command>
          </menu>
       </menuContribution>
+      
       <menuContribution
             allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
@@ -127,9 +132,9 @@
          </toolbar>
       </menuContribution>
    </extension>
+   
    <extension
          point="org.eclipse.ui.commands">
-     
       <command
             defaultHandler="studentlog.commands.DeleteHandler"
             id="studentlog.commands.Delete"
