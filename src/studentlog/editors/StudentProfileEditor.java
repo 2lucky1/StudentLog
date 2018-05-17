@@ -8,10 +8,13 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 
+import studentlog.model.StudentsEntry;
 import studentlog.ui.StudentProfileEditorPanel;
 
 public class StudentProfileEditor extends EditorPart {
 	public static String ID = "studentlog.editors.studentprofile";
+	
+	private StudentProfileEditorPanel panel;
 
 	public StudentProfileEditor() {
 
@@ -27,8 +30,13 @@ public class StudentProfileEditor extends EditorPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		StudentProfileEditorPanel panel = new StudentProfileEditorPanel(parent, SWT.NONE);
+		panel = new StudentProfileEditorPanel(parent, SWT.NONE);
+		
+	}
 
+	public void fillEditorArea(StudentsEntry entry) {
+		panel.fillPanelArea(entry);
+		
 	}
 
 	@Override
@@ -58,9 +66,9 @@ public class StudentProfileEditor extends EditorPart {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	public String getUser(){
-		return((StudentProfileEditorInput) getEditorInput()).getName();
+
+	public String getUser() {
+		return ((StudentProfileEditorInput) getEditorInput()).getName();
 	}
 
 }

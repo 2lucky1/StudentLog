@@ -45,7 +45,7 @@ public class LogFileAccessManager {
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			jsonStr = bufferedReader.readLine();
 			Root root = new Gson().fromJson(jsonStr, Root.class);
-//			root.initParent();
+			root.initParent();
 			return root;
 		} catch (FileNotFoundException e) {
 			System.out.println("LogFileAccessor: file doesnt exists");

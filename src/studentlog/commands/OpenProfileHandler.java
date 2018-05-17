@@ -13,6 +13,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPageListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IPerspectiveListener;
@@ -85,7 +86,8 @@ public class OpenProfileHandler extends AbstractHandler {
 				StudentsEntry entry = (StudentsEntry) obj;
 				StudentProfileEditorInput input = new StudentProfileEditorInput(entry.getName());
 				try {
-					page.openEditor(input, StudentProfileEditor.ID);
+					StudentProfileEditor editor = (StudentProfileEditor)page.openEditor(input, StudentProfileEditor.ID);
+//					editor.fillEditorArea(entry);
 
 				} catch (PartInitException e) {
 					throw new RuntimeException(e);

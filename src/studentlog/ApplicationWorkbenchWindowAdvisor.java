@@ -1,5 +1,6 @@
 package studentlog;
 
+import org.eclipse.swt.dnd.DropTargetListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
@@ -23,7 +24,11 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		configurer.setInitialSize(new Point(900, 450));
 		configurer.setShowCoolBar(true);
+		configurer.setShowPerspectiveBar(true);
 		configurer.setShowStatusLine(true);
 		configurer.setTitle("StudentLog");
+		
+//		 final DropTargetListener dtl = new EditorAreaDropAdapter(configurer.getWindow());
+//	        configurer.configureEditorAreaDropListener(dtl);
 	}
 }

@@ -2,7 +2,14 @@ package studentlog.views;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.DragSourceAdapter;
+import org.eclipse.swt.dnd.DragSourceEvent;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.part.PluginTransfer;
 import org.eclipse.ui.part.ViewPart;
 
 import studentlog.model.Observer;
@@ -31,6 +38,17 @@ public class StudentsView extends ViewPart implements Observer {
 		treeViewer.setLabelProvider(new CustomTreeLabelProvider());
 		root = TreeModel.getInstance().getRoot();
 		treeViewer.setInput(root);
+		
+		DragSource ds = new DragSource(treeViewer.getTree(), DND.DROP_MOVE);
+	    ds.setTransfer(new Transfer[] { TextTransfer.getInstance() });
+	    ds.addDragListener(new DragSourceAdapter() {
+	      public void dragSetData(DragSourceEvent event) {
+	        // Set the data to be the first selected item's text
+	        event.data = treeViewer.getTree().getSelection()[0].getText();
+	      }
+	    });
+	    
+	    
 		
 	}
 	
