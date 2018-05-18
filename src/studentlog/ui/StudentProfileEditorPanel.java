@@ -1,7 +1,6 @@
 package studentlog.ui;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -9,7 +8,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import studentlog.model.StudentsEntry;
-import studentlog.services.ProjectPathFinder;
 
 public class StudentProfileEditorPanel extends Composite {
 
@@ -98,15 +96,15 @@ public class StudentProfileEditorPanel extends Composite {
 		gridData.horizontalIndent = -37;
 		textResult.setLayoutData(gridData);
 
-		labelImage = new Label(this, SWT.NONE);
-		if (imagePath == null) {
-			labelImage.setImage(new Image(this.getDisplay(), ProjectPathFinder.getStudentsPictures() + "imagenotfound.png"));
-		}
-		labelImage.setImage(new Image(this.getDisplay(), imagePath));
-		gridData = new GridData();
-		gridData.horizontalIndent = 50;
-		gridData.verticalIndent = 10;
-		labelImage.setLayoutData(gridData);
+//		labelImage = new Label(this, SWT.NONE);
+//		if (imagePath == null) {
+//			labelImage.setImage(new Image(this.getDisplay(), ProjectPathFinder.getStudentsPictures() + "imagenotfound.png"));
+//		}
+//		labelImage.setImage(new Image(this.getDisplay(), imagePath));
+//		gridData = new GridData();
+//		gridData.horizontalIndent = 50;
+//		gridData.verticalIndent = 10;
+//		labelImage.setLayoutData(gridData);
 
 	}
 	

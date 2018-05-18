@@ -54,7 +54,6 @@ public class TreeModel implements Observable {
 	public String getLogFilePath() {
 
 		
-		System.out.println(ProjectPathFinder.getJSONFolderPath() + DEFAULT_FILE_NAME);
 	return ProjectPathFinder.getJSONFolderPath() + DEFAULT_FILE_NAME;
 	}
 

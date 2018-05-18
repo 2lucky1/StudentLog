@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.dynamichelpers.IExtensionTracker;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPageListener;
@@ -72,6 +73,7 @@ public class OpenProfileHandler extends AbstractHandler {
 		
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
 		IWorkbenchPage page = window.getActivePage();
+		Control control = null;
 		StudentsView view = (StudentsView) page.findView(StudentsView.ID);
 		// Get the selection
 		ISelection selection = view.getSite().getSelectionProvider()
@@ -85,9 +87,10 @@ public class OpenProfileHandler extends AbstractHandler {
 //						person.getId());
 				StudentsEntry entry = (StudentsEntry) obj;
 				StudentProfileEditorInput input = new StudentProfileEditorInput(entry.getName());
-				try {
+				try {					
 					StudentProfileEditor editor = (StudentProfileEditor)page.openEditor(input, StudentProfileEditor.ID);
-//					editor.fillEditorArea(entry);
+					
+					editor.fillEditorArea(entry);
 
 				} catch (PartInitException e) {
 					throw new RuntimeException(e);

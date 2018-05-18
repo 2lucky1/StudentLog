@@ -27,8 +27,5 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowPerspectiveBar(true);
 		configurer.setShowStatusLine(true);
 		configurer.setTitle("StudentLog");
-		
-//		 final DropTargetListener dtl = new EditorAreaDropAdapter(configurer.getWindow());
-//	        configurer.configureEditorAreaDropListener(dtl);
 	}
 }
