@@ -10,6 +10,7 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -30,7 +31,7 @@ import studentlog.ui.StudentProfileEditorPanel;
 
 public class StudentProfileEditor extends EditorPart {
 	public static String ID = "studentlog.editors.studentprofile";
-	
+
 	private StudentProfileEditorPanel panel;
 
 	public StudentProfileEditor() {
@@ -45,37 +46,39 @@ public class StudentProfileEditor extends EditorPart {
 
 	}
 
-//	DropTarget dt = new DropTarget(button, DND.DROP_MOVE);
-//    dt.setTransfer(new Transfer[] { TextTransfer.getInstance() });
-//    dt.addDropListener(new DropTargetAdapter() {
-//      public void drop(DropTargetEvent event) {
-//        // Set the buttons text to be the text being dropped
-//        button.setText((String) event.data);
-//      }
-//    });
-	
 	@Override
 	public void createPartControl(Composite parent) {
 		panel = new StudentProfileEditorPanel(parent, SWT.NONE);
-		
+		Color bgc = panel.getDisplay().getSystemColor(SWT.COLOR_WHITE);
+		getPanel().setBackground(bgc);
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
 		Shell shell = window.getShell();
-		
-		
+
 		DropTarget dt = new DropTarget(panel, DND.DROP_MOVE);
-	    dt.setTransfer(new Transfer[] { TextTransfer.getInstance() });
-	    dt.addDropListener(new DropTargetAdapter() {
-	      public void drop(DropTargetEvent event) {
-	    	 StudentsEntry entry = new Gson().fromJson((String)event.data, StudentsEntry.class);
-	        panel.fillPanelArea(entry);
-	      }
-	    });
+		dt.setTransfer(new Transfer[] { TextTransfer.getInstance() });
+		dt.addDropListener(new DropTargetAdapter() {
+			public void drop(DropTargetEvent event) {
+				StudentsEntry entry = new Gson().fromJson((String) event.data, StudentsEntry.class);
+				StudentProfileEditorInput input = new StudentProfileEditorInput(entry.getName());
+				StudentProfileEditor newEditor;
+				try {
+					newEditor = (StudentProfileEditor) page.openEditor(input, StudentProfileEditor.ID);
+					newEditor.getPanel().fillPanelArea(entry);
+				} catch (PartInitException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-	
+
 	public void fillEditorArea(StudentsEntry entry) {
 		panel.fillPanelArea(entry);
-		
+
+	}
+
+	public StudentProfileEditorPanel getPanel() {
+		return panel;
 	}
 
 	@Override

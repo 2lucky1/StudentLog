@@ -1,6 +1,8 @@
 package studentlog.ui;
 
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -27,11 +29,17 @@ public class StudentProfileEditorPanel extends Composite {
 	public StudentProfileEditorPanel(Composite parent, int style) {
 		super(parent, style);
 		createContent(parent);
+		
 		// TODO Auto-generated constructor stub
 	}
 
 	private void createContent(Composite parent) {
-		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		Color bgc = this.getDisplay().getSystemColor(SWT.COLOR_WHITE);
+		setBackground(bgc);
+
+		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		setLayoutData(gridData);
+		
 		GridLayout gridLayout = new GridLayout(2, false);
 		gridLayout.verticalSpacing = 10;
 		gridLayout.horizontalSpacing = 40;
@@ -46,7 +54,7 @@ public class StudentProfileEditorPanel extends Composite {
 
 		textName = new Text(this, SWT.BORDER);
 		textName.setToolTipText("Student name");
-		GridData gridData = new GridData();
+		gridData = new GridData();
 		gridData.widthHint = 150;
 		gridData.heightHint = 15;
 		gridData.horizontalIndent = -37;
