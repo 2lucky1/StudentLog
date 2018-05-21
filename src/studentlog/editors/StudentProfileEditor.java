@@ -49,8 +49,8 @@ public class StudentProfileEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		panel = new StudentProfileEditorPanel(parent, SWT.NONE);
-		Color bgc = panel.getDisplay().getSystemColor(SWT.COLOR_WHITE);
-		getPanel().setBackground(bgc);
+//		Color bgc = panel.getDisplay().getSystemColor(SWT.COLOR_WHITE);
+//		getPanel().setBackground(bgc);
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
 		Shell shell = window.getShell();

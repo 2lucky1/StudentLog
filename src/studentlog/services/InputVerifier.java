@@ -3,7 +3,7 @@ package studentlog.services;
 public class InputVerifier {
 	
 	public static boolean verifyName(String name) {
-		return name.matches("[A-ÙÝ-ßA-Z][à-ÿa-z]*");
+		return name.matches("[A-ÙÝ-ßA-Z][à-ÿa-z]*\\s[A-ÙÝ-ßA-Z][à-ÿa-z]*");
 
 	}
 	

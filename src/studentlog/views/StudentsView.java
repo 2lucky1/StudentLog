@@ -38,6 +38,7 @@ public class StudentsView extends ViewPart implements Observer {
 
 	@Override
 	public void createPartControl(Composite parent) {
+		TreeModel.getInstance().addObserver(this);
 		treeViewer = new TreeViewer(parent, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		super.getSite().setSelectionProvider(treeViewer);
 		treeViewer.setContentProvider(new CustomTreeContentProvider());
@@ -94,5 +95,9 @@ public class StudentsView extends ViewPart implements Observer {
 	public void update(Root root) {
 		treeViewer.setInput(root);
 
+	}
+	
+	public TreeViewer getTreeViewer() {
+		return treeViewer;
 	}
 }

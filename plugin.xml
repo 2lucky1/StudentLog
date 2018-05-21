@@ -160,7 +160,7 @@
             name="Open">
       </command>
       <command
-            defaultHandler="studentlog.commands.AddStudent"
+            defaultHandler="studentlog.commands.AddStudentHandler"
             id="studentlog.commands.AddStudent"
             name="AddStudent">
       </command>
@@ -179,14 +179,6 @@
             id="studentlog.editors.studentprofile"
             name="StudentProfile">
       </editor>
-   </extension>
-   <extension
-         id="studentDrop"
-         point="org.eclipse.ui.dropActions">
-      <action
-            class="studentlog.actions.StudentDropActionDelegate"
-            id="studentlog.actions.dropStudent">
-      </action>
    </extension>
 
 </plugin>

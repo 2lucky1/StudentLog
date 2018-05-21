@@ -46,21 +46,19 @@ public class TreeModel implements Observable {
 		return root;
 	}
 
-	public void setItems(Root root) {
+	public void setRoot(Root root) {
 		this.root = root;
 		notifyObservers(observers);
 	}
 
 	public String getLogFilePath() {
-
-		
 	return ProjectPathFinder.getJSONFolderPath() + DEFAULT_FILE_NAME;
 	}
 
 	private void initTreeModel() {
 		logFileAccessManager = new LogFileAccessManager();
 		root = logFileAccessManager.readLogItemsFromFile(getLogFilePath());
-		setItems(root);
+		setRoot(root);
 		
 		
 //		
