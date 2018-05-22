@@ -61,6 +61,4 @@ public class StudentProfileEditorInput implements IEditorInput{
 		public int hashCode() {
 		return partisipant.hashCode();
 		}
-	
-
 }

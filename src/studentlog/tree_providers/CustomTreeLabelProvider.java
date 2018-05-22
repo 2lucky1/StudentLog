@@ -1,4 +1,4 @@
-package studentlog.tree;
+package studentlog.tree_providers;
 
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;

@@ -18,12 +18,6 @@ import studentlog.model.StudentsGroup;
 
 public class LogFileAccessManager {
 
-	// private Type itemsListType = new TypeToken<List<StudentsEntry>>() {
-	// }.getType();
-
-	private Type rootType = new TypeToken<Root>() {
-	}.getType();
-
 	public LogFileAccessManager() {
 		super();
 	}

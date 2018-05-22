@@ -1,4 +1,4 @@
-package studentlog.tree;
+package studentlog.tree_providers;
 
 import java.util.List;
 import org.eclipse.jface.viewers.ITreeContentProvider;

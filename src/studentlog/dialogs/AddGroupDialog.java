@@ -15,13 +15,8 @@ import studentlog.services.InputVerifier;
 
 public class AddGroupDialog extends Dialog{
 	private Text groupNumberText;
-//	private Text folderText;
-
 	private Label groupNumberLabel;
-//	private Label folderLabel;
-	
 	private String groupNumber;
-//	private String folder;
 
 	public AddGroupDialog(Shell parentShell) {
 		super(parentShell);
@@ -30,7 +25,7 @@ public class AddGroupDialog extends Dialog{
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Add Group"); //$NON-NLS-1$
+		newShell.setText("Add Group");
 	}
 
 	@Override
@@ -40,20 +35,12 @@ public class AddGroupDialog extends Dialog{
 		composite.setLayout(layout);
 
 		groupNumberLabel = new Label(composite, SWT.NONE);
-		groupNumberLabel.setText("&Group name:"); //$NON-NLS-1$
+		groupNumberLabel.setText("&Group name:"); 
 		groupNumberLabel.setLayoutData(new GridData(GridData.END, GridData.CENTER, false, false));
 
 		groupNumberText = new Text(composite, SWT.BORDER);
 		groupNumberText.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, false));
 
-//		folderLabel = new Label(composite, SWT.NONE);
-//		folderLabel.setText("&Folder:"); //$NON-NLS-1$
-//		folderLabel.setLayoutData(new GridData(GridData.END, GridData.CENTER, false, false));
-//
-//		folderText = new Text(composite, SWT.BORDER);
-//		folderText.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, false));
-
-		
 		return composite;
 	}
 
@@ -62,8 +49,8 @@ public class AddGroupDialog extends Dialog{
 		groupNumber = groupNumberText.getText();
 		
 		if(!InputVerifier.verifyGroupNumber(groupNumber)) {
-			MessageDialog.openError(getShell(), "Invalid group number", //$NON-NLS-1$
-					"Group field must contains an integer number."); //$NON-NLS-1$
+			MessageDialog.openError(getShell(), "Invalid group number", 
+					"Group field must contains an integer number."); 
 			return;
 		}
 		super.okPressed();

@@ -1,6 +1,5 @@
 package studentlog.views;
 
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -8,7 +7,6 @@ import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
-import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
@@ -16,13 +14,12 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.google.gson.Gson;
 
-import studentlog.listeners.MyDragListener;
 import studentlog.model.Observer;
 import studentlog.model.Root;
 import studentlog.model.StudentsEntry;
 import studentlog.model.TreeModel;
-import studentlog.tree.CustomTreeContentProvider;
-import studentlog.tree.CustomTreeLabelProvider;
+import studentlog.tree_providers.CustomTreeContentProvider;
+import studentlog.tree_providers.CustomTreeLabelProvider;
 
 public class StudentsView extends ViewPart implements Observer {
 
@@ -45,15 +42,6 @@ public class StudentsView extends ViewPart implements Observer {
 		treeViewer.setLabelProvider(new CustomTreeLabelProvider());
 		root = TreeModel.getInstance().getRoot();
 		treeViewer.setInput(root);
-
-//		 DragSource ds = new DragSource(tree, DND.DROP_MOVE);
-//		    ds.setTransfer(new Transfer[] { TextTransfer.getInstance() });
-//		    ds.addDragListener(new DragSourceAdapter() {
-//		      public void dragSetData(DragSourceEvent event) {
-//		        // Set the data to be the first selected item's text
-//		        event.data = tree.getSelection()[0].getText();
-//		      }
-//		    });
 		
 		DragSource ds = new DragSource(treeViewer.getTree(), DND.DROP_MOVE);
 
@@ -67,23 +55,6 @@ public class StudentsView extends ViewPart implements Observer {
 		        event.data = jsonStr;
 		      }
 		    });
-		
-		
-//		int operations = DND.DROP_MOVE;
-//		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
-//		treeViewer.addDragSupport(operations, transferTypes, new MyDragListener(treeViewer));
-//		ds.setTransfer(new Transfer[] { TextTransfer.getInstance() });
-//		ds.addDragListener(new MyDragListener(treeViewer));
-		
-	
-	// ISelection selection = this.getSite().getSelectionProvider().getSelection();
-	// if (selection != null && selection instanceof IStructuredSelection) {
-	// Object obj = ((IStructuredSelection) selection).getFirstElement();
-	// if (obj != null) {
-	// // StudentsEntry entry = (StudentsEntry) obj;
-	// }
-	// }
-
 	}
 
 	@Override
